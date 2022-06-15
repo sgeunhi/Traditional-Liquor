@@ -19,8 +19,11 @@ import {
   getDocs,
   collection,
   where,
+  setDoc,
   addDoc,
 } from "firebase/firestore";
+import {getHtml} from "../Api/getHtml";
+import cheerio from "cheerio";
 
 const firebaseConfig = {
   apiKey: "AIzaSyD0but9mklEoUTAJKEX7aTxcamlvLr6WgE",
@@ -61,6 +64,7 @@ const signInWithGoogle = async () => {
   }
 };
 
+// 이메일 비밀번호 로그인
 const logInWithEmailAndPassword = async (email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
@@ -70,6 +74,8 @@ const logInWithEmailAndPassword = async (email, password) => {
   }
 };
 
+
+//이메일 비밀번호 회원가입
 const registerWithEmailAndPassword = async (name, email, password) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
@@ -86,6 +92,7 @@ const registerWithEmailAndPassword = async (name, email, password) => {
   }
 };
 
+// 비밀번호 재설정
 const sendPasswordReset = async (email) => {
   try {
     await sendPasswordResetEmail(auth, email);
@@ -96,9 +103,62 @@ const sendPasswordReset = async (email) => {
   }
 };
 
+// 로그아웃
 const logout = () => {
   signOut(auth);
   alert("로그아웃")
+};
+
+// 전통술 class
+class Alcohol {
+  constructor(name, detailUrl, imageUrl, description, typeofAlcohol, alcohol, volume, price) {
+    this.name = name;
+    this.detailUrl = detailUrl;
+    this.imageUrl = imageUrl;
+    this.description = description;
+    this.typeofAlcohol = typeofAlcohol;
+    this.alcohol = alcohol;
+    this.volume = volume;
+    this.price = price;
+  }
+}
+
+// firestore 전통술 저장
+const saveAlcohol = () => {
+  getHtml().then(html => {
+    let ulList = [];
+    const $ = cheerio.load(html.data);
+    const $bodyList = $("div.list_wrap ul.content_list").children("li");
+    $bodyList.each(function (i, elem) {
+      const alcohol = new Alcohol(
+        $(this).find('div.iner span:nth-child(1) em.data').text(),
+        'https://terms.naver.com/' + $(this).find('strong.title a').attr('href'),
+        $(this).find('div.thumb_area a img').attr('data-src'),
+        $(this).find('div.info_area p').text().replace(/\n|\t/g, ""),
+        $(this).find('div.iner span:nth-child(2) em.data').text(),
+        $(this).find('div.iner span:nth-child(3) em.data').text(),
+        $(this).find('div.iner span:nth-child(4) em.data').text().split(' ')[0],
+        $(this).find('div.iner span:nth-child(5) em.data').text().split('(')[0].replace(" \g", "").replace("￦", ""))
+      ulList[i] = alcohol;
+      // console.log(alcohol);
+    });
+    return ulList;
+  }).then(res => {
+    res.map(data => {
+      const _data = data;
+      addDoc(collection(db, "alcohols"), {
+        name: _data.name,
+        detailUrl: _data.detailUrl,
+        imageUrl: _data.imageUrl,
+        description: _data.description,
+        typeofAlcohol: _data.typeofAlcohol,
+        alcohol: _data.alcohol,
+        volume: _data.volume,
+        price: _data.price
+      });
+    })
+  })
+  console.log("saved!!")
 };
 
 export {
@@ -109,4 +169,5 @@ export {
   registerWithEmailAndPassword,
   sendPasswordReset,
   logout,
+  saveAlcohol,
 };
