@@ -62,7 +62,7 @@ function Register() {
         />
         <Button variant="contained"
                 sx={{width: 260, height: 40, marginBottom: 2}} onClick={register}>
-          Register
+          회원가입
         </Button>
         <GoogleButton onClick={signInWithGoogle} style={{marginBottom: 10, width: 260}}/>
         <Link underline="hover" component={RouterLink} to="/">
