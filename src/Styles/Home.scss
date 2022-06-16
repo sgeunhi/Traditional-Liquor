@@ -1,0 +1,401 @@
+header{
+    width : 100%;
+    height : 30vh;
+    background-color : white;
+    color : #707070;
+    
+}
+.header-nav{
+    height : 33.3%;
+    display : flex;
+    margin : 0 5% 0 5%;
+}
+
+#header-nav-left, #header-nav-right{
+    height : 100%;
+    width : 50%;
+    position : relative;    
+}
+
+#header-nav-left span{
+    font-size : 1.2rem;
+    position : absolute;
+    bottom : 10%;
+    left : 2%;
+
+    /* color : #263363; */
+}
+#header-nav-right{
+    display : flex;
+    flex-direction : row;
+    justify-content : flex-end;
+    align-items : flex-end;
+}
+#header-nav-left::after, #header-nav-right::after{
+    content : "";
+    display : block;
+    position : absolute;
+    bottom : 0;
+    width : 95%;
+    border-bottom : 1px solid #bcbcbc;  
+    margin-left : 1%;
+}
+#header-nav-right{
+    margin-left : 5%;
+}
+
+.header-top{
+    height : 66.6%;
+}
+.container{
+    height : 55%;
+    display : flex;
+    margin : 0% 5% 0% 5%;
+}
+.right-top-container, .center-top-container, .left-top-container{
+    height : 100%;
+    width : 33.3%;
+    display : flex;
+    align-items : center;
+}
+.right-top-container{
+    position : relative;
+}
+.left-top-container{    
+    position : relative;
+    #quiz{
+        position : absolute;
+        right : 0%;
+        text-decoration: none;
+        color : white;
+        background-color :#a2aae2;
+        
+
+        padding : 3%;
+        
+        &:hover{
+            cursor : pointer;
+            background-color : rgba(162, 170, 226, 0.8);
+            color : black;
+        }
+    }
+    
+}
+#search-icon{
+    margin-left : 3%;
+}
+#search-icon:hover{
+    color : #263363;
+    cursor : pointer;
+}
+.header-menu{
+    height : 45%;
+    background-color : black;
+}
+.center-top-container{
+    display : flex;
+    flex-direction: column;
+    justify-content : center;
+    align-items : center;
+    position : relative;
+}
+#alcohol-icon{
+    width : 20%;
+    position : absolute;
+    top : -70%;
+}
+#site-name{
+    margin-top : 5%;
+}
+
+#liquor-list{
+    height : 100%;
+    display : flex;
+    justify-content : center;
+    align-items : center;
+    ul{
+        margin : 0% 5% 0% 5%;
+        color : white;
+    }
+    ul:hover{
+        margin : 0% 5% 0% 5%;
+        color : #d4c2fa;
+        cursor : pointer;
+    }
+}
+
+
+main{
+    height : 200vh;
+    width : 100%;
+}
+#liquor-swiper{
+    height : 60vh;
+    width : 100%;
+    background-color : #C5C9D0;
+    background-color : rgba(168, 195, 236, 0.2);
+    // position : relative;
+}
+#swiper-wrapper{
+    width : 100%;
+    height : 100%;
+    position : relative;
+    // display : flex;
+    // flex-direction : row;
+}
+#swiper{
+    height : 100%;
+    width : 70%;
+    position : relative;
+    #liquor-1{
+        // opacity : 80%;
+    }
+    #liquor-1-text{
+        position : absolute;
+        font-weight : bold;
+        font-size : 120%;
+        color : #f9efe3;
+        color : black;
+        left : 13%;
+        top : 45%;
+    }
+    #liquor-1-quiz{
+        text-decoration : none;
+        position : absolute;
+        left : 20%;
+        top : 130%;
+        font-size : 100%;
+        background-color : black;
+        color : white;
+        padding : 3%; 
+        &:hover{
+            background-color : rgba(249, 239, 227, 0.8);
+            color : black;
+        }
+    }
+    #liquor-2-text{
+        position : absolute;
+        font-weight : bold;
+        font-size : 140%;
+        color : white;
+        left : 20%;
+        top : 20%;
+    }
+    #liquor-2-quiz{
+        text-decoration : none;
+        position : absolute;
+        left : 10%;
+        top : 130%;
+        font-size : 90%;
+        background-color : white;
+        color : black;
+        padding : 3%; 
+        &:hover{
+            background-color : rgba(249, 239, 227, 0.8);
+        }
+    }
+    #liquor-3-text{
+        position : absolute;
+        font-weight : bold;
+        font-size : 140%;
+        color : black;
+        left : 16%;
+        top : 10%;
+    }
+    #liquor-3-quiz{
+        text-decoration : none;
+        font-weight : bold;
+        position : absolute;
+        left : 5%;
+        top : 130%;
+        font-size : 90%;
+        background-color : white;
+        color : black;
+        padding : 4%; 
+        &:hover{
+            background-color : rgba(249, 239, 227, 0.5);
+        }
+    }
+    #liquor-4-text{
+        position : absolute;
+        font-weight : bold;
+        font-size : 130%;
+        color : black;
+        left : 14%;
+        top : 10%;
+    }
+    #liquor-4-quiz{
+        text-decoration : none;
+        font-weight : bold;
+        position : absolute;
+        left : 15%;
+        top : 130%;
+        font-size : 90%;
+        background-color : black;
+        color : white;
+        padding : 4%; 
+        &:hover{
+            background-color : rgba(249, 239, 227, 0.9);
+            color : black;
+        }
+    }
+}
+
+
+#swiper-button-prev, #swiper-button-prev:after{
+    width : 5%;
+    position : absolute;
+    top : 50%;
+    left : 50%;
+}
+
+#swiper-button-next, #swiper-button-next:after{
+    position : absolute;
+    top : 50%;
+    width : 5%;
+    right : 50%;
+}
+.liquor{
+    height : 100%;
+    width : 75%;
+}
+footer{
+    height : 5vh;
+}
+
+.experience-container{
+    height : 15vh;
+    width : 100%;
+    display : flex;
+    flex-direction : row;
+    
+    margin-top : 3%;
+    .experiences{
+        width : 33.3%;
+        position : relative;
+        display : inline-block;
+        text-align : left;
+        .experience-img{
+            padding-left : 15%;
+            width : 17%;
+            left : 10%;
+        }
+        span{
+            position : absolute;
+            top : 30%;
+            padding-left : 5%;
+            font-size : 85%;
+            font-weight : bold;
+        }
+    }
+}
+
+.popular-section{
+    height : 60vh;  
+    background-color : white;
+    margin-top : 3%;
+    #popular-alcohol-icon{
+        height : 12%;
+    }
+    h1{
+        height : 12%;
+    }
+    .popular-wrapper{
+        height : 76%;
+        display : flex;
+        flex-direction : row;
+        justify-content : center;
+        align-items : center;
+        .popular{
+            display:flex;
+            flex-direction : column;
+            text-decoration: none;
+            width : 20%;
+            height : 96%;
+            &:hover{
+                opacity : 80%; 
+            }
+            .popular-img{
+                width : 80%;
+                height : 80%;
+            }
+            .popular-text{
+                margin-top : 2%;
+                width : 80%;
+                text-align : bottom;
+                height : 15%;
+                color : black; 
+            }
+        }
+    }
+}
+.latest-news{
+    height : 52vh;
+    // background-color : powderblue;
+    margin-top : 7%;
+    #newspaper-img{
+        height : 12%;
+    }
+    h1{
+        height : 12%;
+    }
+    .news-wrapper{
+        height : 76%;
+        display : flex;
+        flex-direction : row;
+        justify-content : center;
+        align-items : center;
+        .news{
+            margin : 2%;
+            width : 35%;
+            height : 100%;
+            background-color : brown;
+            img{
+                width : 100%;
+                height : 100%;
+                &:hover{
+                    cursor : pointer;
+                }
+            }
+            span a{
+                text-decoration: none;
+                color : #263363; 
+            }
+        }
+    }   
+}
+#ricewine-icon{
+    height : 4%;
+    margin-top : 5%;
+}
+#liquor-card-wrapper-text{
+    height : 5%;
+    
+}
+.liquor-card-wrapper{
+    display : flex;
+    flex-direction : row;
+    // justify-content : center;
+    align-items : center;
+    flex-flow : wrap;
+    height : 100vh;
+    width : 90%;
+    margin : auto;
+    .liquor-card{
+        width : 20%;
+        margin : 0 2.5% 0 2.5%;
+        height : 45vh;
+        margin-bottom : 2%;
+        .liquor-card-img{
+            width : 100%;
+            height : 85%;
+            margin-bottom : 5%;
+        }
+        span{
+            height : 10%;
+        }
+    }
+}
+footer{
+    margin-top : 3%;
+}
