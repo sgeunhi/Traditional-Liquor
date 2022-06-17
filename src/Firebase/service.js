@@ -24,6 +24,7 @@ import {
 } from "firebase/firestore";
 import {getHtml} from "../Api/getHtml";
 import cheerio from "cheerio";
+import {Alcohol} from "../Entity/Alcohol";
 
 const firebaseConfig = {
   apiKey: "AIzaSyD0but9mklEoUTAJKEX7aTxcamlvLr6WgE",
@@ -108,20 +109,6 @@ const logout = () => {
   signOut(auth);
   alert("로그아웃")
 };
-
-// 전통술 class
-class Alcohol {
-  constructor(name, detailUrl, imageUrl, description, typeofAlcohol, alcohol, volume, price) {
-    this.name = name;
-    this.detailUrl = detailUrl;
-    this.imageUrl = imageUrl;
-    this.description = description;
-    this.typeofAlcohol = typeofAlcohol;
-    this.alcohol = alcohol;
-    this.volume = volume;
-    this.price = price;
-  }
-}
 
 // firestore 전통술 저장
 const saveAlcohol = () => {
