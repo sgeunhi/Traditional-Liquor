@@ -12,15 +12,15 @@ const StarRate=()=>{
         '최고예요',
       ];
       const ReviewBox = styled.div`
-      padding: 30px;
-      color: #999;
+      padding: 20px;
+      color: black;
       font-size: 20px;
     
       i {
         margin: 20px 10px 20px 0;
         opacity: 0.1;
         cursor: pointer;
-        font-size: 50px;
+        font-size: 20px;
       }
     
       .yellowStar {
@@ -43,14 +43,15 @@ const StarContainer = styled.div`
         position: absolute;
         top: 50px;
         left: 50%;
-        width: 130px;
-        height: 30px;
+        width: 100px;
+        height: 20px;
         padding-top: 7px;
         transform: translate(-50%, -50%);
         color: white;
         background-color: #1f8ce6;
         border-radius: 4px;
-        font-size: 16px;
+        font-size: 13px;
+        justify-content:center;
 
   ${({ show }) => (show ? `display:block` : `display: none`)}
 `;
@@ -59,7 +60,7 @@ const StarContainer = styled.div`
     return (
         <ReviewBox>
             <ReviewTextBox>
-                <p>술을 평가해주세요!</p>
+                <p>이 술을 평가해주세요!</p>
                 {[1,2,3,4,5].map(num=>(
                     <HiddenText key={num} show={hovered===num}>
                         {textList[num-1]}
