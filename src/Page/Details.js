@@ -13,7 +13,7 @@ import "../Styles/Details.css";
 const Details = () => {
   let params = useParams();
   const showRecentView = () => {
-  
+
   }
   const naverLink=()=>{
     window.location.href = "www.naver.com";
@@ -23,7 +23,7 @@ const Details = () => {
       <header>
         <nav className="header-nav">
           <div id="header-nav-left">
-            <span>Snu-Liquor | 전통주</span>  
+            <span>Snu-Liquor | 전통주</span>
           </div>
           <div id="header-nav-right">
             <Button id="recent-view-btn" style={{height : "60%", color : '#707070'}}onClick={() => showRecentView()}>최근에 본 목록</Button>
@@ -57,7 +57,7 @@ const Details = () => {
             <div className="left-top-container">
               <RouterLink id="quiz" style={{ borderRadius:"3%"}}component={RouterLink} to="/quiz">술 MBTI 검사하러 가기</RouterLink>
               {/* <Button id="quiz" style={{height : "60%", backgroundColor : "purple", border : "1px solid black", color : 'white'}} onClick={() => showRecentView()}>술 MBTI 검사하기</Button> */}
-            </div>  
+            </div>
           </div>
           <div className="header-menu">
             <li id="liquor-list">
@@ -68,7 +68,7 @@ const Details = () => {
             </li>
           </div>
         </div>
-      </header> 
+      </header>
       <div className='details'>
         <img className="experience-img" src={party} alt="" />
         <div className='detailRight'>
