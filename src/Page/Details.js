@@ -7,6 +7,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import alcohol_icon from "../Asset/alcohol-icon.png";
 import {Link as RouterLink} from "react-router-dom";
 import party from "../Asset/party.png"
+import magnifier from "../Asset/magnifier.png"
 import StarRate from '../Component/starRate';
 import "../Styles/Details.css";
 const Details = () => {
@@ -14,6 +15,9 @@ const Details = () => {
   const showRecentView = () => {
   
   }
+  const naverLink=()=>{
+    window.location.href = "www.naver.com";
+}
   return (
     <div>
       <header>
@@ -78,8 +82,9 @@ const Details = () => {
           </div>
           </div>
       </div>
-      <div>
-        
+      <div className='naverLink' onclick="naverLink()">
+        <img src={magnifier} className='magnifier'/>
+        <h2 className='naverUrl'>네이버 지식백과로 더 자세히 알아보기</h2>
       </div>
       <div className='starRate'>
         <StarRate/>
