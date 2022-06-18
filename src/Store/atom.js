@@ -1,7 +1,7 @@
 import {atom} from "recoil";
 import * as React from "react";
 
-export const UserState = atom({
-  key: 'UserState',
-  default: null,
+export const AlcoholListState = atom({
+  key: 'AlcoholListState',
+  default: [],
 })
