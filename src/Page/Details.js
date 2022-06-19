@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
-import {Button} from "@mui/material";
+import {Button, Input, Rating} from "@mui/material";
 import {auth, logout} from "../Firebase/service";
 import {Autocomplete, TextField} from "@mui/material"
 import SearchIcon from '@mui/icons-material/Search';
@@ -10,17 +10,27 @@ import party from "../Asset/party.png"
 import magnifier from "../Asset/magnifier.png"
 import StarRate from '../Component/starRate';
 import "../Styles/Details.css";
+import KakaoShareButton from "../Component/KakaoShareButton.js";
+import {useState} from "react";
 const Details = () => {
   let params = useParams();
   const showRecentView = () => {
 
   }
-  const naverLink=()=>{
-    window.location.href = "www.naver.com";
+
+const [starRate,setStarRate]=useState(0);
+const [review,setReview]=useState('aa');
+const onChange=(e)=>{
+    setReview(e.target.value)
 }
+const postReview=()=>{
+    console.log(starRate);
+    console.log(review)
+    }
+const Header=React.useRef()
   return (
     <div>
-      <header>
+      <header ref={Header}>
         <nav className="header-nav">
           <div id="header-nav-left">
             <span>Snu-Liquor | 전통주</span>
@@ -86,10 +96,18 @@ const Details = () => {
         <img src={magnifier} className='magnifier'/>
         <h2 className='naverUrl'>네이버 지식백과로 더 자세히 알아보기</h2>
       </div>
-      <div className='starRate'>
-        <StarRate/>
-        <Button>평가하기</Button>
-      </div>
+        <div className='rate'>
+            <h5 className='rateHead'>이 술을 평가해주세요!</h5>
+            <div className='rateDetails'>
+                <Rating className='starRate' name="simple-controlled"
+                        value={starRate}
+                        onChange={(event, newValue) => {
+                            setStarRate(newValue);
+                        }}/>
+                <Input className='reviewInput' onChange={onChange} value={review} />
+                <Button className='rateButton' onClick={postReview}>평가 등록</Button>
+            </div>
+        </div>
     </div>
   );
 };
