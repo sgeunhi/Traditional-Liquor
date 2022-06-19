@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
-import {Button} from "@mui/material";
+import {Button,Input} from "@mui/material";
 import {auth, logout} from "../Firebase/service";
 import {Autocomplete, TextField} from "@mui/material"
 import SearchIcon from '@mui/icons-material/Search';
@@ -10,6 +10,7 @@ import party from "../Asset/party.png"
 import magnifier from "../Asset/magnifier.png"
 import StarRate from '../Component/starRate';
 import "../Styles/Details.css";
+import KakaoShareButton from "../Component/KakaoShareButton.js";
 const Details = () => {
   let params = useParams();
   const showRecentView = () => {
@@ -18,9 +19,10 @@ const Details = () => {
   const naverLink=()=>{
     window.location.href = "www.naver.com";
 }
+const Header=React.useRef()
   return (
     <div>
-      <header>
+      <header ref={Header}>
         <nav className="header-nav">
           <div id="header-nav-left">
             <span>Snu-Liquor | 전통주</span>
@@ -86,10 +88,14 @@ const Details = () => {
         <img src={magnifier} className='magnifier'/>
         <h2 className='naverUrl'>네이버 지식백과로 더 자세히 알아보기</h2>
       </div>
-      <div className='starRate'>
-        <StarRate/>
-        <Button>평가하기</Button>
-      </div>
+        <div className='rate'>
+            <h5 className='rateHead'>이 술을 평가해주세요!</h5>
+            <div className='rateDetails'>
+                <StarRate/>
+                <Input className='reviewInput'/>
+                <Button>평가 등록</Button>
+            </div>
+        </div>
     </div>
   );
 };
