@@ -60,7 +60,7 @@ const StarContainer = styled.div`
     return (
         <ReviewBox>
             <ReviewTextBox>
-                <p>이 술을 평가해주세요!</p>
+                <br/>
                 {[1,2,3,4,5].map(num=>(
                     <HiddenText key={num} show={hovered===num}>
                         {textList[num-1]}
