@@ -383,9 +383,11 @@ footer {
   flex-direction: row;
   align-items: center;
   flex-flow: wrap;
-  height: 100vh;
+  height: auto;
   width: 90%;
   margin: auto;
+  min-height: 100%;
+  padding-bottom: 20px;
 }
 .liquor-card-wrapper .liquor-card {
   width: 20%;
