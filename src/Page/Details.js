@@ -105,7 +105,7 @@ const Header=React.useRef()
                             setStarRate(newValue);
                         }}/>
                 <Input className='reviewInput' onChange={onChange} value={review} />
-                <Button onClick={postReview}>평가 등록</Button>
+                <Button className='rateButton' onClick={postReview}>평가 등록</Button>
             </div>
         </div>
     </div>

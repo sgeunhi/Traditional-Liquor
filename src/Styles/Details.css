@@ -74,10 +74,13 @@ h1{
     display: flex;
 }
 .starRate{
-    margin-left:10px;
+    width:100px;
 }
 .reviewInput{
     margin-left: 10px;
-    width: 470px;
+    width: 100%;
     margin-bottom: 20px;
+}
+.rateButton{
+    width:200px;
 }
