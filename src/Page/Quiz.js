@@ -1,5 +1,6 @@
 import * as React from 'react';
 import KakaoShareButton from "../Component/KakaoShareButton";
+
 const Quiz = () => {
   return (
     <div>

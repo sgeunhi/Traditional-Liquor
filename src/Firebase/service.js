@@ -1,4 +1,4 @@
-import * as firebase from "firebase/app";
+import firebase from "firebase/compat/app"
 import {initializeApp} from "firebase/app";
 import {getAnalytics} from "firebase/analytics";
 import {

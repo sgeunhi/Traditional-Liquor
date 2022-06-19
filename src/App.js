@@ -1,7 +1,4 @@
-import logo from './logo.svg';
 import './App.css';
-import {useEffect, useState} from 'react';
-import Button from "@mui/material/Button";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Login from "./Page/Login";
 import Home from "./Page/Home";
@@ -10,8 +7,6 @@ import Register from "./Page/Register";
 import Details from "./Page/Details";
 
 function App() {
-  const [user, setUser] = useState(null);
-  const [nickname, setNickname] = useState('닉네임');
 
   return (
     <div className="App">
