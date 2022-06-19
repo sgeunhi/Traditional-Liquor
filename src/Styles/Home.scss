@@ -3,7 +3,7 @@ header{
     height : 30vh;
     background-color : white;
     color : #707070;
-    
+
 }
 .header-nav{
     height : 33.3%;
@@ -14,7 +14,7 @@ header{
 #header-nav-left, #header-nav-right{
     height : 100%;
     width : 50%;
-    position : relative;    
+    position : relative;
 }
 
 #header-nav-left span{
@@ -37,7 +37,7 @@ header{
     position : absolute;
     bottom : 0;
     width : 95%;
-    border-bottom : 1px solid #bcbcbc;  
+    border-bottom : 1px solid #bcbcbc;
     margin-left : 1%;
 }
 #header-nav-right{
@@ -61,7 +61,7 @@ header{
 .right-top-container{
     position : relative;
 }
-.left-top-container{    
+.left-top-container{
     position : relative;
     #quiz{
         position : absolute;
@@ -69,17 +69,17 @@ header{
         text-decoration: none;
         color : white;
         background-color :#a2aae2;
-        
+
 
         padding : 3%;
-        
+
         &:hover{
             cursor : pointer;
             background-color : rgba(162, 170, 226, 0.8);
             color : black;
         }
     }
-    
+
 }
 #search-icon{
     margin-left : 3%;
@@ -167,7 +167,7 @@ main{
         font-size : 100%;
         background-color : black;
         color : white;
-        padding : 3%; 
+        padding : 3%;
         &:hover{
             background-color : rgba(249, 239, 227, 0.8);
             color : black;
@@ -189,7 +189,7 @@ main{
         font-size : 90%;
         background-color : white;
         color : black;
-        padding : 3%; 
+        padding : 3%;
         &:hover{
             background-color : rgba(249, 239, 227, 0.8);
         }
@@ -211,7 +211,7 @@ main{
         font-size : 90%;
         background-color : white;
         color : black;
-        padding : 4%; 
+        padding : 4%;
         &:hover{
             background-color : rgba(249, 239, 227, 0.5);
         }
@@ -233,7 +233,7 @@ main{
         font-size : 90%;
         background-color : black;
         color : white;
-        padding : 4%; 
+        padding : 4%;
         &:hover{
             background-color : rgba(249, 239, 227, 0.9);
             color : black;
@@ -268,7 +268,7 @@ footer{
     width : 100%;
     display : flex;
     flex-direction : row;
-    
+
     margin-top : 3%;
     .experiences{
         width : 33.3%;
@@ -291,7 +291,7 @@ footer{
 }
 
 .popular-section{
-    height : 60vh;  
+    height : 60vh;
     background-color : white;
     margin-top : 3%;
     #popular-alcohol-icon{
@@ -313,7 +313,7 @@ footer{
             width : 20%;
             height : 96%;
             &:hover{
-                opacity : 80%; 
+                opacity : 80%;
             }
             .popular-img{
                 width : 80%;
@@ -324,7 +324,7 @@ footer{
                 width : 80%;
                 text-align : bottom;
                 height : 15%;
-                color : black; 
+                color : black;
             }
         }
     }
@@ -359,10 +359,10 @@ footer{
             }
             span a{
                 text-decoration: none;
-                color : #263363; 
+                color : #263363;
             }
         }
-    }   
+    }
 }
 #ricewine-icon{
     height : 4%;
@@ -370,7 +370,7 @@ footer{
 }
 #liquor-card-wrapper-text{
     height : 5%;
-    
+
 }
 .liquor-card-wrapper{
     display : flex;
