@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
-import {Button,Input} from "@mui/material";
+import {Button, Input, Rating} from "@mui/material";
 import {auth, logout} from "../Firebase/service";
 import {Autocomplete, TextField} from "@mui/material"
 import SearchIcon from '@mui/icons-material/Search';
@@ -11,14 +11,22 @@ import magnifier from "../Asset/magnifier.png"
 import StarRate from '../Component/starRate';
 import "../Styles/Details.css";
 import KakaoShareButton from "../Component/KakaoShareButton.js";
+import {useState} from "react";
 const Details = () => {
   let params = useParams();
   const showRecentView = () => {
 
   }
-  const naverLink=()=>{
-    window.location.href = "www.naver.com";
+
+const [starRate,setStarRate]=useState(0);
+const [review,setReview]=useState('aa');
+const onChange=(e)=>{
+    setReview(e.target.value)
 }
+const postReview=()=>{
+    console.log(starRate);
+    console.log(review)
+    }
 const Header=React.useRef()
   return (
     <div>
@@ -91,9 +99,13 @@ const Header=React.useRef()
         <div className='rate'>
             <h5 className='rateHead'>이 술을 평가해주세요!</h5>
             <div className='rateDetails'>
-                <StarRate/>
-                <Input className='reviewInput'/>
-                <Button>평가 등록</Button>
+                <Rating className='starRate' name="simple-controlled"
+                        value={starRate}
+                        onChange={(event, newValue) => {
+                            setStarRate(newValue);
+                        }}/>
+                <Input className='reviewInput' onChange={onChange} value={review} />
+                <Button onClick={postReview}>평가 등록</Button>
             </div>
         </div>
     </div>
