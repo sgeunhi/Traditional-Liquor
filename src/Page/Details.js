@@ -49,7 +49,6 @@ const onChange=(e)=>{
           </div>
           </div>
         </div>
-      </div>
       <a className='naverLink' href={currentAlcohol.detailUrl} target="_blank">
         <img src={magnifier} className='magnifier'/>
         <h2 className='naverUrl'>네이버 지식백과로 더 자세히 알아보기</h2>
@@ -67,7 +66,6 @@ const onChange=(e)=>{
             </div>
         </div>
       </div>
-    </div>
   );
 };
 
