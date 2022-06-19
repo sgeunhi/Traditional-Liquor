@@ -28,10 +28,15 @@ import 'swiper/css';
 
 import "../Styles/Reset.css";
 import "../Styles/Home.scss";
+import {useRecoilValue} from "recoil";
+import {alcoholListState} from "../Store/selector";
 
 const Home = () => {
   const [user, loading, error] = useAuthState(auth);
   const navigate = useNavigate();
+
+  const alcoholList = useRecoilValue(alcoholListState);
+  console.log(alcoholList);
 
   useEffect(() => {
     if (loading) {
@@ -40,6 +45,7 @@ const Home = () => {
     }
     if (!user) navigate("/");
   }, [user, loading]);
+
   const showRecentView = () => {
 
   }
@@ -117,7 +123,7 @@ const Home = () => {
             autoplay={true}
             id="swiper"
             slidesPerView={1}
-            onSlideChange={() => console.log('slide change')}
+            // onSlideChange={() => console.log('slide change')}
             navigation={{
               nextEl: '.swiper-button-next',
               prevEl: '.swiper-button-prev',
@@ -126,7 +132,7 @@ const Home = () => {
               el: ".swiper-pagination",
               clickable: true,
             }}
-            onSwiper={(swiper) => console.log(swiper)}
+            // onSwiper={(swiper) => console.log(swiper)}
           >
             <div id="swiper-wrapper">
               <SwiperSlide>
@@ -234,72 +240,13 @@ const Home = () => {
         <h1 style={{fontSize: "200%"}} id="liquor-card-wrapper-text"><span style={{fontWeight: "bold"}}>전통주</span> 둘러보기
         </h1>
         <div className="liquor-card-wrapper">
-          <div className="liquor-card" onClick={onClickLiquor}>
-            <img className="liquor-card-img" src={imgUrl}/>
-            <span style={{fontWeight: "bold"}}>{name} | {price} <br></br> {description}</span>
-          </div>
-          <div className="liquor-card">
-            <img className="liquor-card-img" src={imgUrl}/>
-            <span style={{fontWeight: "bold"}}>{name} | {price} <br></br> {description}</span>
-          </div>
-          <div className="liquor-card">
-            <img className="liquor-card-img" src={imgUrl}/>
-            <span style={{fontWeight: "bold"}}>{name} | {price} <br></br> {description}</span>
-          </div>
-          <div className="liquor-card">
-            <img className="liquor-card-img" src={imgUrl}/>
-            <span style={{fontWeight: "bold"}}>{name} | {price} <br></br> {description}</span>
-          </div>
-          <div className="liquor-card">
-            <img className="liquor-card-img" src={imgUrl}/>
-            <span style={{fontWeight: "bold"}}>{name} | {price} <br></br> {description}</span>
-          </div>
-          <div className="liquor-card">
-            <img className="liquor-card-img" src={imgUrl}/>
-            <span style={{fontWeight: "bold"}}>{name} | {price} <br></br> {description}</span>
-          </div>
-          <div className="liquor-card">
-            <img className="liquor-card-img" src={imgUrl}/>
-            <span style={{fontWeight: "bold"}}>{name} | {price} <br></br> {description}</span>
-          </div>
-          <div className="liquor-card">
-            <img className="liquor-card-img" src={imgUrl}/>
-            <span style={{fontWeight: "bold"}}>{name} | {price} <br></br> {description}</span>
-          </div>
-          <div className="liquor-card">
-            <img className="liquor-card-img" src={imgUrl}/>
-            <span style={{fontWeight: "bold"}}>{name} | {price} <br></br> {description}</span>
-          </div>
-          <div className="liquor-card">
-            <img className="liquor-card-img" src={imgUrl}/>
-            <span style={{fontWeight: "bold"}}>{name} | {price} <br></br> {description}</span>
-          </div>
-          <div className="liquor-card">
-            <img className="liquor-card-img" src={imgUrl}/>
-            <span style={{fontWeight: "bold"}}>{name} | {price} <br></br> {description}</span>
-          </div>
-          <div className="liquor-card">
-            <img className="liquor-card-img" src={imgUrl}/>
-            <span style={{fontWeight: "bold"}}>{name} | {price} <br></br> {description}</span>
-          </div>
-          <div className="liquor-card">
-            <img className="liquor-card-img" src={imgUrl}/>
-            <span style={{fontWeight: "bold"}}>{name} | {price} <br></br> {description}</span>
-          </div>
-          <div className="liquor-card">
-            <img className="liquor-card-img" src={imgUrl}/>
-            <span style={{fontWeight: "bold"}}>{name} | {price} <br></br> {description}</span>
-          </div>
-
-          <div className="liquor-card">
-            <img className="liquor-card-img" src={imgUrl}/>
-            <span style={{fontWeight: "bold"}}>{name} | {price} <br></br> {description}</span>
-          </div>
-          <div className="liquor-card">
-            <img className="liquor-card-img" src={imgUrl}/>
-            <span style={{fontWeight: "bold"}}>{name} | {price} <br></br> {description}</span>
-          </div>
-
+          {alcoholList.map((alcohol, index) => {
+            return (
+              <div className="liquor-card" onClick={onClickLiquor}>
+                <img className="liquor-card-img" referrerPolicy="no-referrer" src={alcohol.imageUrl}/>
+                <span style={{fontWeight: "bold"}}>{alcohol.name} | {alcohol.price} <br></br></span>
+              </div>)
+          })}
         </div>
       </main>
 

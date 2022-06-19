@@ -15,6 +15,7 @@ class Alcohol {
     this.price = price;
   }
 }
+
 const postAlcohol = () => {
   getHtml().then(html => {
     let ulList = [];
@@ -28,9 +29,9 @@ const postAlcohol = () => {
         $(this).find('div.thumb_area a img').attr('data-src'),
         $(this).find('div.info_area p').text().replace(/\n|\t/g, ""),
         $(this).find('div.iner span:nth-child(2) em.data').text(),
-        parseFloat($(this).find('div.iner span:nth-child(3) em.data').text().replace("%","")),
-        parseFloat($(this).find('div.iner span:nth-child(4) em.data').text().split(' ')[0].replace("ml","")),
-        parseFloat($(this).find('div.iner span:nth-child(5) em.data').text().split('(')[0].replace(" \g", "").replace("￦", "").replace(",","")))
+        parseFloat($(this).find('div.iner span:nth-child(3) em.data').text().replace("%", "")),
+        parseFloat($(this).find('div.iner span:nth-child(4) em.data').text().split(' ')[0].replace("ml", "")),
+        parseFloat($(this).find('div.iner span:nth-child(5) em.data').text().split('(')[0].replace(" \g", "").replace("￦", "").replace(",", "")))
       ulList[i] = alcohol;
       // console.log(alcohol);
     });

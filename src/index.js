@@ -8,9 +8,9 @@ import {RecoilRoot} from "recoil";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <RecoilRoot>
-    <React.StrictMode>
+    <React.Suspense fallback={<div>Loading...</div>}>
       <App/>
-    </React.StrictMode>
+    </React.Suspense>
   </RecoilRoot>
 );
 
