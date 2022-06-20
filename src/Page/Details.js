@@ -6,59 +6,61 @@ import {Autocomplete, TextField} from "@mui/material"
 import SearchIcon from '@mui/icons-material/Search';
 import alcohol_icon from "../Asset/alcohol-icon.png";
 import {Link as RouterLink} from "react-router-dom";
-import party from "../Asset/party.png"
 import magnifier from "../Asset/magnifier.png"
-import StarRate from '../Component/starRate';
+import StarRates from '../Component/StarRates';
 import "../Styles/Details.css";
 import KakaoShareButton from "../Component/KakaoShareButton.js";
-import {useState, useRef, useEffect} from "react";
-import {useRecoilValue} from "recoil";
-import {alcoholListState} from "../Store/selector";
-// import {dummyAlcoholListState} from '../Store/atom';
-import moment from 'moment';
+import {useState,useRef,useEffect} from "react";
+import {useRecoilValue,useRecoilState,useRecoilRefresher_UNSTABLE} from "recoil";
+import {alcoholListState, rateListState} from "../Store/selector";
+import getRate from "../Api/getRate"
+import postRate from "../Api/postRate"
 import {useAuthState} from "react-firebase-hooks/auth";
+import {Rate} from "../Entity/Rate"
+import { currentAlcoholIdState } from '../Store/atom';
+
 const Details = () => {
+  const [user, loading, error] = useAuthState(auth);
   const alcoholList = useRecoilValue(alcoholListState);
   // const alcoholList = useRecoilValue(dummyAlcoholListState);
     let params = useParams();
   const currentAlcohol=alcoholList[params.id];
-  const showRecentView = () => {
-
-  }
-
-
-const [starRate,setStarRate]=useState(0);
+  const top = useRef();
+  const [starRate,setStarRate]=useState(0);
 const [review,setReview]=useState('');
+const [currentAlcoholId,setCurrentAlcoholId]=useRecoilState(currentAlcoholIdState);
 const [nowTime,setNowtime]=useState('');
-/*
-const Head = useRef();
-React.useEffect(()=>{
-  Head.current.focus();
-},[]);
-*/
-
-  const [user, loading, error] = useAuthState(auth);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (loading) {
-      // maybe trigger a loading screen
-      return;
-    }
-    if (!user) navigate("/");
-  }, [user, loading]);
+const reviewList=useRecoilValue(rateListState);
+const reviewListRefresh=useRecoilRefresher_UNSTABLE(rateListState);
+useEffect(()=>{
+  top.current.focus();
+  setCurrentAlcoholId(currentAlcohol.id);
+})
 
 const onChange=(e)=>{
     setReview(e.target.value)
   }
-  const postReview = () => {
-    setNowtime(moment().format('YYYYMMDD HH:mm:ss'));
+  const postReview = async() => {
+
+    setNowtime(new Date().getTime())
     console.log(nowTime);
     console.log(starRate);
     console.log(review);
+    postRate(
+      new Rate(
+        null,
+        user.uid,
+        currentAlcohol.id,
+        starRate,
+        review,
+        nowTime
+      )
+    ).then(()=>
+      reviewListRefresh()
+    )
   }
   return (
-    <div /*ref={Head}*/>
+    <div ref={top}>
       <div className='details'>
         <div className='detailImage'>
         <img className="alcoholImage" src={currentAlcohol.imageUrl} alt="" />
@@ -93,7 +95,15 @@ const onChange=(e)=>{
                 <Button className='rateButton' onClick={postReview}>평가 등록</Button>
             </div>
             <div className='reviewList'>
-                <h2 className='reviewHeader'>REVIEWS</h2>
+              <h2 className='reviewHeader'>REVIEWS</h2>
+              {reviewList.map((review) => {
+                    return (
+                          <>
+                          <StarRates starNum={review.numberOfStars} />
+                          <p className='reviews'> {review.userId} :{review.reviewText} {review.timestamp.toLocaleString()}</p>
+                          </>
+                    )
+                })}
             </div>
         </div>
       </div>
