@@ -20,11 +20,7 @@ const Quiz = () => {
 
     useEffect(() => {
         if (quizNumber === 8) {
-            const filtered = alcoholList.filter(filter[conditionList[0]])
-                .filter(filter[conditionList[1]])
-                .filter(filter[conditionList[2]])
-                .filter(filter[conditionList[3]]);
-
+            const filtered = alcoholList.filter(_alcohol => filter.matchConditions(_alcohol, conditionList))
             const shuffled = filtered.sort(() => 0.5 - Math.random());
             const selected = shuffled.slice(0, 3);
 
@@ -101,15 +97,22 @@ const Quiz = () => {
                     quizNumber === quizData.length ?
                         <div id="result-container" style={resultContainerStyle}>
                             <Typography variant="h6" fontWeight="bold"
-                                        style={questionStyle} >술 MBTI 결과</Typography>
+                                        style={questionStyle}>술 MBTI 결과</Typography>
                             <Typography variant="h5"
                                         style={questionStyle}>🍷{mbtiData[mbti]}🥂 인</Typography>
-                            <Typography variant="h6"
-                                        style={questionStyle}>당신에게 아래의 술들을 추천합니다!</Typography>
-                            <div id="recommend-liquor" style={recommendLiquorStyle}>
-                                <RecommendItems mbtiCharacter={mbtiData[mbti]} alcohols={recommendedAlcohols} />
-                            </div>
 
+                            {recommendedAlcohols.length === 0 ?
+                                <Typography variant="h6"
+                                            style={questionStyle}>당신이 좋아할만한 술을 찾지 못했어요.😭</Typography>
+                                :
+                                <>
+                                    <Typography variant="h6"
+                                                style={questionStyle}>당신에게 아래의 술들을 추천합니다!</Typography>
+                                    <div id="recommend-liquor" style={recommendLiquorStyle}>
+                                        <RecommendItems mbtiCharacter={mbtiData[mbti]} alcohols={recommendedAlcohols}/>
+                                    </div>
+                                </>
+                            }
                         </div> :
                         <>
                             <div id="question">

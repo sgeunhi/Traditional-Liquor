@@ -1,15 +1,15 @@
 const filter = {
-    and: function (e, f1, f2, f3, f4) {
-        return f1(e) && f2(e) && f3(e) && f4(e)
+    matchConditions: function (e, conditionList) {
+        return this[conditionList[0]](e) && this[conditionList[1]](e) && this[conditionList[2]](e) && this[conditionList[3]](e);
     },
-    largeVolume:  (alcohol) => { return alcohol.volume > 375 },
-    smallVolume:  (alcohol) => { return alcohol.volume <= 375 },
-    expensive:  (alcohol) => { return alcohol.price >= 10000 },
-    cheap:  (alcohol) => { return alcohol.price < 10000 },
-    highAlcohol:  (alcohol) => { return alcohol.alcohol >= 15 },
-    lowAlcohol:  (alcohol) => { return alcohol.alcohol < 15 },
-    young:  (alcohol) => { return alcohol.typeofAlcohol.includes('과실주') || alcohol.typeofAlcohol.includes('리큐르') },
-    old:  (alcohol) => { return alcohol.typeofAlcohol.includes('탁주') || alcohol.typeofAlcohol.includes('소주') }
+    largeVolume:  alcohol => alcohol.volume > 375,
+    smallVolume:  alcohol => alcohol.volume <= 375,
+    expensive:  alcohol => alcohol.price >= 10000,
+    cheap:  alcohol => alcohol.price < 10000,
+    highAlcohol:  alcohol => alcohol.alcohol >= 15,
+    lowAlcohol:  alcohol => alcohol.alcohol < 15,
+    young:  alcohol => alcohol.typeofAlcohol.includes('과실주') || alcohol.typeofAlcohol.includes('리큐르'),
+    old:  alcohol => alcohol.typeofAlcohol.includes('탁주') || alcohol.typeofAlcohol.includes('소주')
 }
 
 export default filter;
