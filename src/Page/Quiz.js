@@ -8,11 +8,9 @@ import {LinearProgress} from "@mui/material";
 import Items from "../Component/Items";
 import {useRecoilValue} from "recoil";
 import {alcoholListState} from "../Store/selector";
-
 const Quiz = () => {
     const quizData = require("../Asset/quiz-data.json");
     const mbtiData = require("../Asset/mbti.json");
-    const fs = require('fs');
     const [quizNumber, setQuizNumber] = useState(0);
     const [conditionList, setConditionList] = useState([]);
     const [mbti, setMbti] = useState('');
@@ -26,12 +24,7 @@ const Quiz = () => {
     const saveAlcohols = () => {
         const data = JSON.stringify(alcoholList.map(alcohol => alcohol.toData()));
 
-        fs.writeFile('..Asset/alcohol-data.json', data, (err) => {
-            if (err) {
-                throw err;
-            }
-            console.log("JSON data is saved.");
-        });
+       
     }
 
     useEffect(() => {

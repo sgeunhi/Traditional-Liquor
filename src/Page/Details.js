@@ -37,20 +37,21 @@ useEffect(()=>{
 })
 useEffect(() => {
   getRate(currentAlcohol.id)
-      .then(rates => {
-          setRates(rates);
+      .then(_rates => {
+          console.log(_rates);
+          setRates(_rates);
       });
 }, [])
-console.log(rates)
+console.log()
 const onChange=(e)=>{
     setReview(e.target.value)
   }
   const postReview = async() => {
-    setNowtime(moment().format('YYYYMMDD HH:mm:ss'));
+
+    setNowtime(new Date().getTime())
     console.log(nowTime);
     console.log(starRate);
     console.log(review);
-    
     await postRate(
       new Rate(
         null,
@@ -99,6 +100,7 @@ const onChange=(e)=>{
             </div>
             <div className='reviewList'>
               <h2 className='reviewHeader'>REVIEWS</h2>
+              
             </div>
         </div>
       </div>
