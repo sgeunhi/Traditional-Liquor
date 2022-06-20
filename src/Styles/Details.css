@@ -99,3 +99,6 @@ h1{
     margin-left:20px;
     font-size: 50px;
 }
+.reviewList{
+    overflow: scroll;
+}
