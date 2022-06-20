@@ -17,8 +17,8 @@ import {alcoholListState} from "../Store/selector";
 import moment from 'moment';
 const Details = () => {
   const alcoholList = useRecoilValue(alcoholListState);
-  const currentAlcohol=alcoholList[1];
-  let params = useParams();
+    let params = useParams();
+  const currentAlcohol=alcoholList[params.id];
   const showRecentView = () => {
 
   }
@@ -59,6 +59,9 @@ const onChange=(e)=>{
           </div>
           </div>
         </div>
+
+        <KakaoShareButton/>
+        <br/>
       <a className='naverLink' href={currentAlcohol.detailUrl} target="_blank">
         <img src={magnifier} className='magnifier'/>
         <h2 className='naverUrl'>네이버 지식백과로 더 자세히 알아보기</h2>
