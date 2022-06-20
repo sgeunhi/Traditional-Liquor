@@ -15,3 +15,8 @@ export const itemOffsetState = atom({
   key: 'itemOffsetState',
   default: 0
 });
+
+export const dummyAlcoholListState = atom({
+  key: 'dummyAlcoholListState',
+  default: require('../Asset/dummy-alcohols.json')
+})
