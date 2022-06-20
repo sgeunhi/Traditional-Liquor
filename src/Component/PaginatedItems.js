@@ -33,6 +33,7 @@ function PaginatedItems({itemsPerPage}) {
       </div>
       <div className="footer">
         <ReactPaginate
+          
           breakLabel="..."
           nextLabel=">"
           onPageChange={handlePageClick}

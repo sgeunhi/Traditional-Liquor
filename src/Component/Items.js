@@ -3,16 +3,18 @@ import "../Styles/Reset.css";
 import "../Styles/Home.css";
 
 function Items({currentItems}) {
-  const onClickLiquor = (e) => {
-    console.log(e);
-  }
+  // const onClickLiquor = (e) => {
+  //   window.location.href = './details/0';
+  // }
+  const currentPage = document.querySelector('.currentPage');
+  const curr_page = currentPage ? currentPage.innerText : 0;
   return (
     <>
-      {currentItems.map((alcohol) => {
+      {currentItems.map((alcohol, idx) => {
         return (
-          <div className="liquor-card" onClick={onClickLiquor}>
+          <div className="liquor-card" onClick={() => window.location.href = `./details/${parseInt(curr_page) * 28 - 28 + idx}`}>
             <img className="liquor-card-img" referrerPolicy="no-referrer" src={alcohol.imageUrl}/>
-            <span style={{fontWeight: "bold"}}>{alcohol.name} | {alcohol.price} <br></br></span>
+            <span style={{fontWeight: "bold"}}>{alcohol.name} | {alcohol.price}원 <br></br></span>
           </div>)
       })}
     </>
