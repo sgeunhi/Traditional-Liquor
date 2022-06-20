@@ -29,22 +29,23 @@ const Details = () => {
   }
   const top = useRef();
   const [starRate,setStarRate]=useState(0);
-const [review,setReview]=useState('');
-const [nowTime,setNowtime]=useState('');
-const [rates,setRates]=useState(null);
-useEffect(()=>{
-  top.current.focus();
-})
-useEffect(() => {
-  getRate(currentAlcohol.id)
-      .then(rates => {
-          setRates(rates);
-      });
-}, [])
-console.log(rates[0])
-const onChange=(e)=>{
+  const [review,setReview]=useState('');
+  const [nowTime,setNowtime]=useState('');
+  const [rates,setRates]=useState([]);
+
+  useEffect(()=>{
+    top.current.focus();
+  })
+
+  useEffect(async () => {
+    const _rates = await getRate(currentAlcohol.id);
+    setRates(_rates);
+  }, [])
+
+  const onChange=(e)=>{
     setReview(e.target.value)
   }
+  
   const postReview = async() => {
     setNowtime(moment().format('YYYYMMDD HH:mm:ss'));
     console.log(nowTime);
@@ -61,6 +62,9 @@ const onChange=(e)=>{
         nowTime
       )
     );
+
+    const _rates = await getRate(currentAlcohol.id);
+    setRates(_rates);
   }
   return (
     <div ref={top}>
@@ -99,7 +103,13 @@ const onChange=(e)=>{
             </div>
             <div className='reviewList'>
               <h2 className='reviewHeader'>REVIEWS</h2>
-                
+                {rates.map((rate, idx) => {
+                    return (
+                        <div>
+                            <p>{idx}. {rate.reviewText}</p>
+                        </div>
+                    )
+                })}
             </div>
         </div>
       </div>
