@@ -15,7 +15,12 @@ import {useState,useRef,useEffect} from "react";
 import {useRecoilValue} from "recoil";
 import {alcoholListState} from "../Store/selector";
 import moment from 'moment';
+import getRate from "../Api/getRate"
+import postRate from "../Api/postRate"
+import {useAuthState} from "react-firebase-hooks/auth";
+import {Rate} from "../Entity/Rate"
 const Details = () => {
+  const [user, loading, error] = useAuthState(auth);
   const alcoholList = useRecoilValue(alcoholListState);
     let params = useParams();
   const currentAlcohol=alcoholList[params.id];
@@ -23,27 +28,39 @@ const Details = () => {
 
   }
   const top = useRef();
+  const [starRate,setStarRate]=useState(0);
+const [review,setReview]=useState('');
+const [nowTime,setNowtime]=useState('');
+const [rates,setRates]=useState(null);
 useEffect(()=>{
   top.current.focus();
 })
-
-const [starRate,setStarRate]=useState(0);
-const [review,setReview]=useState('');
-const [nowTime,setNowtime]=useState('');
-/*
-const Head = useRef();
-React.useEffect(()=>{
-  Head.current.focus();
-},[]);
-*/
+useEffect(() => {
+  getRate(currentAlcohol.id)
+      .then(rates => {
+          setRates(rates);
+      });
+}, [])
+console.log(rates[0])
 const onChange=(e)=>{
     setReview(e.target.value)
   }
-  const postReview = () => {
+  const postReview = async() => {
     setNowtime(moment().format('YYYYMMDD HH:mm:ss'));
     console.log(nowTime);
     console.log(starRate);
     console.log(review);
+    
+    await postRate(
+      new Rate(
+        null,
+        user.uid,
+        currentAlcohol.id,
+        starRate,
+        review,
+        nowTime
+      )
+    );
   }
   return (
     <div ref={top}>
@@ -81,7 +98,8 @@ const onChange=(e)=>{
                 <Button className='rateButton' onClick={postReview}>평가 등록</Button>
             </div>
             <div className='reviewList'>
-                <h2 className='reviewHeader'>REVIEWS</h2>
+              <h2 className='reviewHeader'>REVIEWS</h2>
+                
             </div>
         </div>
       </div>
