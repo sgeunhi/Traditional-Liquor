@@ -3,11 +3,11 @@ import {useEffect, useState} from 'react';
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import "../Styles/Quiz.css";
-import {where} from "firebase/firestore";
 import {LinearProgress} from "@mui/material";
-import Items from "../Component/Items";
 import {useRecoilValue} from "recoil";
-import {alcoholListState} from "../Store/selector";
+import {dummyAlcoholListState} from "../Store/atom";
+import RecommendItems from "../Component/RecommendItems";
+import filter from "../Entity/Filter";
 
 const Quiz = () => {
     const quizData = require("../Asset/quiz-data.json");
@@ -16,24 +16,18 @@ const Quiz = () => {
     const [conditionList, setConditionList] = useState([]);
     const [mbti, setMbti] = useState('');
     const [recommendedAlcohols, setRecommendedAlcohols] = useState([]);
-    const alcoholList = useRecoilValue(alcoholListState);
-    // const alcoholList = useRecoilValue(dummyAlcoholListState);
-
-    const convertConditionToWhere = (conditionList) => {
-        return conditionList.map(condition => where(...condition.split(" ")));
-    }
-  }, [quizNumber]);
-
-    const saveAlcohols = () => {
-        const data = JSON.stringify(alcoholList.map(alcohol => alcohol.toData()));
-    }
+    const alcoholList = useRecoilValue(dummyAlcoholListState);
 
     useEffect(() => {
         if (quizNumber === 8) {
-            const shuffled = alcoholList.slice().sort(() => 0.5 - Math.random());
-            let selected = shuffled.slice(0, 3);
+            const filtered = alcoholList.filter(filter[conditionList[0]])
+                .filter(filter[conditionList[1]])
+                .filter(filter[conditionList[2]])
+                .filter(filter[conditionList[3]]);
 
-            console.log(selected);
+            const shuffled = filtered.sort(() => 0.5 - Math.random());
+            const selected = shuffled.slice(0, 3);
+
             setRecommendedAlcohols(selected)
         }
     }, [quizNumber]);
@@ -49,94 +43,94 @@ const Quiz = () => {
         }
 
         setQuizNumber(quizNumber + 1);
+    }
 
-    setQuizNumber(quizNumber + 1);
-  }
+    const questionContainerStyle = {
+        height: '70vh',
+        display: 'flex',
+        flexDirection: 'column',
+        flexWrap: 'wrap',
+        alignItems: 'center',
+        justifyContent: 'center'
+    };
 
-  const questionContainerStyle = {
-    height: '70vh',
-    display: 'flex',
-    flexDirection: 'column',
-    flexWrap: 'wrap',
-    alignItems: 'center',
-    justifyContent: 'center'
-  };
+    const resultContainerStyle = {
+        height: '70vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: '10%'
+    };
 
-  const resultContainerStyle = {
-    height: '70vh',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center'
-  };
+    const recommendLiquorStyle = {
+        display: 'flex',
+        flexDirection: 'row',
+        marginTop: '10%'
+    }
 
-  const recommendLiquorStyle = {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center'
-  }
+    const questionStyle = {
+        marginBottom: '5%'
+    };
 
-  const questionStyle = {
-    marginBottom: '20px'
-  };
+    const answerStyle = {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center'
+    };
 
-  const answerStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center'
-  };
+    const buttonStyle = {
+        fontSize: '1rem',
+        fontWeight: '800',
+        height: '6em',
+        width: '24rem',
+        margin: '1em'
+    };
 
-  const buttonStyle = {
-    fontSize: '1rem',
-    fontWeight: '800',
-    height: '6em',
-    width: '24rem',
-    margin: '1em'
-  };
+    const questionCountStyle = {
+        marginTop: '1rem',
+        fontSize: '1.3rem',
+        fontWeight: '800'
+    };
 
-  const questionCountStyle = {
-    marginTop: '1rem',
-    fontSize: '1.3rem',
-    fontWeight: '800'
-  };
+    return (
+        <>
+            <div id="question-container" style={questionContainerStyle}>
+                {
+                    quizNumber === quizData.length ?
+                        <div id="result-container" style={resultContainerStyle}>
+                            <Typography variant="h6" fontWeight="bold"
+                                        style={questionStyle} >술 MBTI 결과</Typography>
+                            <Typography variant="h5"
+                                        style={questionStyle}>🍷{mbtiData[mbti]}🥂 인</Typography>
+                            <Typography variant="h6"
+                                        style={questionStyle}>당신에게 아래의 술들을 추천합니다!</Typography>
+                            <div id="recommend-liquor" style={recommendLiquorStyle}>
+                                <RecommendItems mbtiCharacter={mbtiData[mbti]} alcohols={recommendedAlcohols} />
+                            </div>
 
-  return (
-    <div>
-      <div id="question-container" style={questionContainerStyle}>
-        {
-          quizNumber === quizData.length ?
-            <div id="result-container" style={resultContainerStyle}>
-              <Typography variant="h6"
-                          style={questionStyle}>당신은...</Typography>
-              <Typography variant="h5"
-                          style={questionStyle}>{mbtiData[mbti]}</Typography>
-              <Typography variant="h6"
-                          style={questionStyle}>아래의 술들을 추천합니다!</Typography>
-              <div id="recommend-liquor" style={recommendLiquorStyle}>
-                <Items currentItems={recommendedAlcohols}/>
-              </div>
-            </div> :
-            <div>
-              <div id="question">
-                <Typography variant="h5"
-                            style={questionStyle}>{quizData[quizNumber].question}</Typography>
-              </div>
-              <div id="answer" style={answerStyle}>
-                <Button variant="outlined" color="secondary" size="large" style={buttonStyle}
-                        onClick={() => onAnswerSelected(quizNumber, quizData[quizNumber].answers[0])}>{quizData[quizNumber].answers[0].text}</Button>
-                <Button variant="outlined" color="secondary" size="large" style={buttonStyle}
-                        onClick={() => onAnswerSelected(quizNumber, quizData[quizNumber].answers[1])}>{quizData[quizNumber].answers[1].text}</Button>
-                <LinearProgress style={{width: '24rem'}} variant="determinate" color="secondary"
-                                value={(quizNumber + 1) / quizData.length * 100}/>
-                <Typography
-                  style={questionCountStyle}>{`${quizNumber + 1} / ${quizData.length}`}</Typography>
-              </div>
+                        </div> :
+                        <>
+                            <div id="question">
+                                <Typography variant="h5"
+                                            style={questionStyle}>{quizData[quizNumber].question}</Typography>
+                            </div>
+                            <div id="answer" style={answerStyle}>
+                                <Button variant="outlined" color="secondary" size="large" style={buttonStyle}
+                                        onClick={() => onAnswerSelected(quizNumber, quizData[quizNumber].answers[0])}>{quizData[quizNumber].answers[0].text}</Button>
+                                <Button variant="outlined" color="secondary" size="large" style={buttonStyle}
+                                        onClick={() => onAnswerSelected(quizNumber, quizData[quizNumber].answers[1])}>{quizData[quizNumber].answers[1].text}</Button>
+                                <LinearProgress style={{width: '24rem'}} variant="determinate" color="secondary"
+                                                value={(quizNumber + 1) / quizData.length * 100}/>
+                                <Typography
+                                    style={questionCountStyle}>{`${quizNumber + 1} / ${quizData.length}`}</Typography>
+                            </div>
+                        </>
+                }
             </div>
-        }
-      </div>
-    </div>
-  );
+        </>
+    );
 };
 
 export default Quiz;
