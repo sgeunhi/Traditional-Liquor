@@ -15,4 +15,18 @@ export class Alcohol {
     static fromData(data) {
         return Object.assign(new Alcohol(), data)
     }
+
+    toData() {
+        return {
+            id: this.id,
+            name: this.name,
+            detailUrl: this.detailUrl,
+            imageUrl: this.imageUrl,
+            description: this.description,
+            typeofAlcohol: this.typeofAlcohol,
+            alcohol: this.alcohol,
+            volume: this.volume,
+            price: this.price
+        }
+    }
 }

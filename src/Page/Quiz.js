@@ -12,6 +12,7 @@ import {alcoholListState} from "../Store/selector";
 const Quiz = () => {
     const quizData = require("../Asset/quiz-data.json");
     const mbtiData = require("../Asset/mbti.json");
+    const fs = require('fs');
     const [quizNumber, setQuizNumber] = useState(0);
     const [conditionList, setConditionList] = useState([]);
     const [mbti, setMbti] = useState('');
@@ -20,6 +21,17 @@ const Quiz = () => {
 
     const convertConditionToWhere = (conditionList) => {
         return conditionList.map(condition => where(...condition.split(" ")));
+    }
+
+    const saveAlcohols = () => {
+        const data = JSON.stringify(alcoholList.map(alcohol => alcohol.toData()));
+
+        fs.writeFile('..Asset/alcohol-data.json', data, (err) => {
+            if (err) {
+                throw err;
+            }
+            console.log("JSON data is saved.");
+        });
     }
 
     useEffect(() => {
@@ -100,7 +112,7 @@ const Quiz = () => {
                     quizNumber === quizData.length ?
                         <div id="result-container" style={resultContainerStyle}>
                             <Typography variant="h6"
-                                        style={questionStyle}>당신은...</Typography>
+                                        style={questionStyle} >당신은...</Typography>
                             <Typography variant="h5"
                                         style={questionStyle}>{mbtiData[mbti]}</Typography>
                             <Typography variant="h6"
