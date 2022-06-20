@@ -14,9 +14,11 @@ import KakaoShareButton from "../Component/KakaoShareButton.js";
 import {useState,useRef} from "react";
 import {useRecoilValue} from "recoil";
 import {alcoholListState} from "../Store/selector";
+// import {dummyAlcoholListState} from '../Store/atom';
 import moment from 'moment';
 const Details = () => {
   const alcoholList = useRecoilValue(alcoholListState);
+  // const alcoholList = useRecoilValue(dummyAlcoholListState);
     let params = useParams();
   const currentAlcohol=alcoholList[params.id];
   const showRecentView = () => {
