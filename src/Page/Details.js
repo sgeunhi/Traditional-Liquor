@@ -6,15 +6,13 @@ import {Autocomplete, TextField} from "@mui/material"
 import SearchIcon from '@mui/icons-material/Search';
 import alcohol_icon from "../Asset/alcohol-icon.png";
 import {Link as RouterLink} from "react-router-dom";
-import party from "../Asset/party.png"
 import magnifier from "../Asset/magnifier.png"
-import StarRate from '../Component/starRate';
+import StarRates from '../Component/StarRates';
 import "../Styles/Details.css";
 import KakaoShareButton from "../Component/KakaoShareButton.js";
 import {useState,useRef,useEffect} from "react";
 import {useRecoilValue,useRecoilState,useRecoilRefresher_UNSTABLE} from "recoil";
 import {alcoholListState, rateListState} from "../Store/selector";
-import moment from 'moment';
 import getRate from "../Api/getRate"
 import postRate from "../Api/postRate"
 import {useAuthState} from "react-firebase-hooks/auth";
@@ -96,9 +94,12 @@ const onChange=(e)=>{
             </div>
             <div className='reviewList'>
               <h2 className='reviewHeader'>REVIEWS</h2>
-              {reviewList.map((review, idx) => {
+              {reviewList.map((review) => {
                     return (
-                          <p>{idx}. {review.numberOfStars},{review.reviewText}</p>
+                          <>
+                          <StarRates starNum={review.numberOfStars} />
+                          <p className='reviews'> {review.userId} :{review.reviewText} {review.timestamp.toLocaleString()}</p>
+                          </>
                     )
                 })}
             </div>
