@@ -6,7 +6,7 @@ import Quiz from "./Page/Quiz";
 import Register from "./Page/Register";
 import Details from "./Page/Details";
 import Layout from "./Page/Layout";
-
+import Liquor from "./Page/Liquor";
 function App() {
 
   return (
@@ -16,6 +16,7 @@ function App() {
           <Route path="/" element={<Login/>}/>
           <Route element={<Layout/>}>
             <Route path="/home" element={<Home/>}/>
+            <Route path="/liquor/:id" element={<Liquor/>}/>
             <Route path="/details/:id" element={<Details/>}/>
             <Route path="/quiz" element={<Quiz/>}/>
           </Route>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useParams} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import {Button, Input, Rating} from "@mui/material";
 import {auth, logout} from "../Firebase/service";
 import {Autocomplete, TextField} from "@mui/material"
@@ -18,9 +18,11 @@ import postRate from "../Api/postRate"
 import {useAuthState} from "react-firebase-hooks/auth";
 import {Rate} from "../Entity/Rate"
 import { currentAlcoholIdState } from '../Store/atom';
+
 const Details = () => {
   const [user, loading, error] = useAuthState(auth);
   const alcoholList = useRecoilValue(alcoholListState);
+  // const alcoholList = useRecoilValue(dummyAlcoholListState);
     let params = useParams();
   const currentAlcohol=alcoholList[params.id];
   const top = useRef();

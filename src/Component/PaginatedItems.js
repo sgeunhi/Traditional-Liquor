@@ -8,12 +8,14 @@ import Items from "./Items";
 import "../Styles/Home.scss";
 import "../Styles/Pagination.css"
 import "../Styles/Reset.css";
+// import {dummyAlcoholListState} from '../Store/atom';
 
 function PaginatedItems({itemsPerPage}) {
   const [pageCount, setPageCount] = useRecoilState(pageCountState);
   const [currentAlcoholList, setCurrentAlcoholList] = useRecoilState(currentAlcoholListState);
   const [itemOffset, setItemOffset] = useRecoilState(itemOffsetState);
   const alcoholList = useRecoilValue(alcoholListState);
+  // const alcoholList = useRecoilValue(dummyAlcoholListState);
   const scrollToRef = useRef();
 
   useEffect(() => {
@@ -33,7 +35,6 @@ function PaginatedItems({itemsPerPage}) {
       </div>
       <div className="footer">
         <ReactPaginate
-          
           breakLabel="..."
           nextLabel=">"
           onPageChange={handlePageClick}
@@ -45,7 +46,7 @@ function PaginatedItems({itemsPerPage}) {
           activeClassName={"currentPage"}
           previousClassName={"pageLabel-btn"}
           nextClassName={"pageLabel-btn"}
-          onClick={() => scrollToRef.current.scrollIntoView({ behavior: 'smooth' })}
+          onClick={() => scrollToRef.current.scrollIntoView({behavior: 'smooth'})}
         />
       </div>
     </>

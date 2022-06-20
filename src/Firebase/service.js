@@ -23,7 +23,6 @@ import {
   addDoc,
 } from "firebase/firestore";
 
-
 const firebaseConfig = {
   apiKey: "AIzaSyD0but9mklEoUTAJKEX7aTxcamlvLr6WgE",
   authDomain: "webprogramming-a287a.firebaseapp.com",
@@ -33,6 +32,15 @@ const firebaseConfig = {
   appId: "1:486204863182:web:9deb56dfa940088566d69f",
   measurementId: "G-LVRPXLYL9B"
 };
+// const firebaseConfig = {
+//   apiKey: "AIzaSyCZjgDWb8WI1FhxDPS76thU40G37aFV30o",
+//   authDomain: "tempwebprogramming.firebaseapp.com",
+//   projectId: "tempwebprogramming",
+//   storageBucket: "tempwebprogramming.appspot.com",
+//   messagingSenderId: "538087544656",
+//   appId: "1:538087544656:web:1e45dc894e632459cdbe55",
+//   measurementId: "G-LYN5RZ4Y1G"
+// };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

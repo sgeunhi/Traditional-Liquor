@@ -20,7 +20,13 @@ export const dummyAlcoholListState = atom({
   key: 'dummyAlcoholListState',
   default: require('../Asset/dummy-alcohols.json')
 })
+
 export const currentAlcoholIdState =atom({
   key:'currentAlcoholIdState',
   default:''
 });
+
+export const categoryState = atom({
+  key : 'categoryState',
+  default : 0,
+})
