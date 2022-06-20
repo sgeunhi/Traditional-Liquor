@@ -28,9 +28,11 @@ import 'swiper/css';
 
 import "../Styles/Reset.css";
 import "../Styles/Home.scss";
-import {useRecoilValue} from "recoil";
+import {useRecoilValue, useRecoilState} from "recoil";
 import {alcoholListState} from "../Store/selector";
 import PaginatedItems from "../Component/PaginatedItems";
+import { categoryState } from '../Store/atom';
+// import {dummyAlcoholListState} from '../Store/atom';
 
 const Home = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -44,11 +46,29 @@ const Home = () => {
     if (!user) navigate("/");
   }, [user, loading]);
 
-  const [recentItems, setRecentItems] = useState([]);
   const data = require("../Asset/alcohol.json");
   const {name, imgUrl, price, description} = data.alcohol;
   const alcoholList = useRecoilValue(alcoholListState);
-  console.log(alcoholList);
+  // const alcoholList = useRecoilValue(dummyAlcoholListState);
+  
+  const randomHot = [];
+  while(randomHot.length < 4){
+    const rand = Math.floor(Math.random() * 100);
+    if (randomHot.indexOf(rand) === -1){
+      randomHot.push(rand);
+    }
+  }
+  const [category, setCategory] = useRecoilState(categoryState);
+  useEffect(()=> {
+    if (category !== 0){
+      const liquors = document.querySelector('#liquor-card-wrapper-text');
+      liquors.scrollIntoView();  
+    }
+    // const liquors = document.querySelector('#liquor-card-wrapper-text');
+    // liquors.scrollIntoView();
+
+    console.log("category changing recognized");
+  }, [category]);
   return (
     <div style={{height: "100vh"}}>
       <div id="liquor-swiper">
@@ -132,11 +152,18 @@ const Home = () => {
         <h1 style={{fontSize: "200%"}}>현재 <span style={{color: "#bb17ff"}}>HOT</span>한 주류</h1>
         <div className="popular-wrapper">
           {/* <div className="popular"> */}
-          <RouterLink className="popular" component={RouterLink} to="/details/2">
+          
+          {randomHot.map(rand => 
+            <RouterLink className="popular" component={RouterLink} to={`/details/${alcoholList[rand].id}`}>
+            <img className="popular-img" src={alcoholList[rand].imageUrl}/>
+            
+            <span className="popular-text">{alcoholList[rand].name} | {alcoholList[rand].price} </span>
+          </RouterLink>  
+            )}
+          {/* <RouterLink className="popular" component={RouterLink} to="/details/2">
             <img className="popular-img" src={imgUrl}/>
             <span className="popular-text">{name} | {price} <br></br> {description}</span>
           </RouterLink>
-          {/* </div> */}
           <RouterLink className="popular" component={RouterLink} to="/quiz">
             <img className="popular-img" src={imgUrl}/>
             <span className="popular-text">{name} | {price} <br></br> {description}</span>
@@ -148,7 +175,7 @@ const Home = () => {
           <RouterLink className="popular" component={RouterLink} to="/quiz">
             <img className="popular-img" src={imgUrl}/>
             <span className="popular-text">{name} | {price} <br></br> {description}</span>
-          </RouterLink>
+          </RouterLink> */}
         </div>
       </div>
       <div className="latest-news">

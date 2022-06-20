@@ -14,10 +14,12 @@ import KakaoShareButton from "../Component/KakaoShareButton.js";
 import {useState, useRef, useEffect} from "react";
 import {useRecoilValue} from "recoil";
 import {alcoholListState} from "../Store/selector";
+// import {dummyAlcoholListState} from '../Store/atom';
 import moment from 'moment';
 import {useAuthState} from "react-firebase-hooks/auth";
 const Details = () => {
   const alcoholList = useRecoilValue(alcoholListState);
+  // const alcoholList = useRecoilValue(dummyAlcoholListState);
     let params = useParams();
   const currentAlcohol=alcoholList[params.id];
   const showRecentView = () => {
