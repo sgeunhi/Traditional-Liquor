@@ -30,11 +30,11 @@
     "answers": [
       {
         "text": "천천히 오래 즐길 수 있는 저도주",
-        "condition": "alcohol < 15%"
+        "condition": "alcohol < 15"
       },
       {
         "text": "화끈하게 달릴 수 있는 고도주",
-        "condition": "alcohol >= 15%"
+        "condition": "alcohol >= 15"
       }
     ]
   },

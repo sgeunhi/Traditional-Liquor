@@ -1,24 +1,22 @@
 import * as React from 'react';
-import KakaoShareButton from "../Component/KakaoShareButton";
-import {useState} from "react";
 import {useEffect, useState} from 'react';
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import "../Styles/Quiz.css";
-import QuizHeader from "../Component/QuizHeader";
 import {where} from "firebase/firestore";
-import quizData from "../Asset/quiz-data.json";
 import {LinearProgress} from "@mui/material";
+import Items from "../Component/Items";
+import {useRecoilValue} from "recoil";
+import {alcoholListState} from "../Store/selector";
 
 const Quiz = () => {
     const quizData = require("../Asset/quiz-data.json");
     const mbtiData = require("../Asset/mbti.json");
-    const data = require("../Asset/alcohol.json");
-
-    const {name, imgUrl, price, description} = data.alcohol;
     const [quizNumber, setQuizNumber] = useState(0);
     const [conditionList, setConditionList] = useState([]);
     const [mbti, setMbti] = useState('');
+    const [recommendedAlcohols, setRecommendedAlcohols] = useState([]);
+    const alcoholList = useRecoilValue(alcoholListState);
 
     const convertConditionToWhere = (conditionList) => {
         return conditionList.map(condition => where(...condition.split(" ")));
@@ -26,8 +24,11 @@ const Quiz = () => {
 
     useEffect(() => {
         if (quizNumber === 8) {
-            convertConditionToWhere(conditionList).forEach(e => console.log(e));
-            console.log(mbti);
+            const shuffled = alcoholList.slice().sort(() => 0.5 - Math.random());
+            let selected = shuffled.slice(0, 3);
+
+            console.log(selected);
+            setRecommendedAlcohols(selected)
         }
     }, [quizNumber]);
 
@@ -94,7 +95,6 @@ const Quiz = () => {
 
     return (
         <div>
-            <QuizHeader/>
             <div id="question-container" style={questionContainerStyle}>
                 {
                     quizNumber === quizData.length ?
@@ -106,18 +106,7 @@ const Quiz = () => {
                             <Typography variant="h6"
                                         style={questionStyle}>아래의 술들을 추천합니다!</Typography>
                             <div id="recommend-liquor" style={recommendLiquorStyle}>
-                                <div className="liquor-card">
-                                    <img className="liquor-card-img" src={imgUrl}/>
-                                    <span style={{fontWeight: "bold"}}>{name} | {price} <br></br> {description}</span>
-                                </div>
-                                <div className="liquor-card">
-                                    <img className="liquor-card-img" src={imgUrl}/>
-                                    <span style={{fontWeight: "bold"}}>{name} | {price} <br></br> {description}</span>
-                                </div>
-                                <div className="liquor-card">
-                                    <img className="liquor-card-img" src={imgUrl}/>
-                                    <span style={{fontWeight: "bold"}}>{name} | {price} <br></br> {description}</span>
-                                </div>
+                                <Items currentItems={recommendedAlcohols} />
                             </div>
                         </div> :
                         <div>
