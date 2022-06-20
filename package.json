@@ -17,6 +17,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "firebase": "^9.8.2",
+    "fs": "^0.0.1-security",
     "moment": "^2.29.3",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
