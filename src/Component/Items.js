@@ -41,4 +41,5 @@ function Items({currentItems}) {
   );
 }
 
+// window.location.href =
 export default Items;

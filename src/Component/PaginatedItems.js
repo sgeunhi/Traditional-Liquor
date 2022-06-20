@@ -35,7 +35,6 @@ function PaginatedItems({itemsPerPage}) {
       </div>
       <div className="footer">
         <ReactPaginate
-          
           breakLabel="..."
           nextLabel=">"
           onPageChange={handlePageClick}
@@ -47,7 +46,7 @@ function PaginatedItems({itemsPerPage}) {
           activeClassName={"currentPage"}
           previousClassName={"pageLabel-btn"}
           nextClassName={"pageLabel-btn"}
-          onClick={() => scrollToRef.current.scrollIntoView({ behavior: 'smooth' })}
+          onClick={() => scrollToRef.current.scrollIntoView({behavior: 'smooth'})}
         />
       </div>
     </>

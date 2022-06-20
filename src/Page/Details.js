@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useParams} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import {Button, Input, Rating} from "@mui/material";
 import {auth, logout} from "../Firebase/service";
 import {Autocomplete, TextField} from "@mui/material"
@@ -11,11 +11,12 @@ import magnifier from "../Asset/magnifier.png"
 import StarRate from '../Component/starRate';
 import "../Styles/Details.css";
 import KakaoShareButton from "../Component/KakaoShareButton.js";
-import {useState,useRef} from "react";
+import {useState, useRef, useEffect} from "react";
 import {useRecoilValue} from "recoil";
 import {alcoholListState} from "../Store/selector";
 // import {dummyAlcoholListState} from '../Store/atom';
 import moment from 'moment';
+import {useAuthState} from "react-firebase-hooks/auth";
 const Details = () => {
   const alcoholList = useRecoilValue(alcoholListState);
   // const alcoholList = useRecoilValue(dummyAlcoholListState);
@@ -35,6 +36,18 @@ React.useEffect(()=>{
   Head.current.focus();
 },[]);
 */
+
+  const [user, loading, error] = useAuthState(auth);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (loading) {
+      // maybe trigger a loading screen
+      return;
+    }
+    if (!user) navigate("/");
+  }, [user, loading]);
+
 const onChange=(e)=>{
     setReview(e.target.value)
   }
