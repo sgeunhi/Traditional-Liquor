@@ -48,7 +48,7 @@ const Layout = () => {
               <SearchIcon id="search-icon" style={{fontSize: "2rem"}}/>
             </div>
             <div className="center-top-container">
-              <img id="alcohol-icon" src={alcohol_icon} alt="alcohol"/>
+              <img id="alcohol-icon" src={alcohol_icon} alt="alcohol" onClick={() => window.location.href="/home"}/>
               <span id="site-name" style={{fontSize: "1.4rem", color: "black"}}>Snu-Liquor</span>
             </div>
             <div className="left-top-container">

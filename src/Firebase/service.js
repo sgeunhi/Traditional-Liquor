@@ -23,6 +23,7 @@ import {
   addDoc,
 } from "firebase/firestore";
 
+
 const firebaseConfig = {
   apiKey: "AIzaSyD0but9mklEoUTAJKEX7aTxcamlvLr6WgE",
   authDomain: "webprogramming-a287a.firebaseapp.com",

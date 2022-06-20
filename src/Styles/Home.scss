@@ -386,6 +386,10 @@ footer{
         margin : 0 2.5% 0 2.5%;
         height : 45vh;
         margin-bottom : 2%;
+        &:hover{
+            opacity : 80%;
+            cursor : pointer;
+        }
         .liquor-card-img{
             width : 100%;
             height : 85%;
