@@ -41,7 +41,7 @@ useEffect(() => {
           setRates(rates);
       });
 }, [])
-console.log(rates[0])
+console.log(rates)
 const onChange=(e)=>{
     setReview(e.target.value)
   }
@@ -99,7 +99,6 @@ const onChange=(e)=>{
             </div>
             <div className='reviewList'>
               <h2 className='reviewHeader'>REVIEWS</h2>
-                
             </div>
         </div>
       </div>
