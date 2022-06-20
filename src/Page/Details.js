@@ -11,7 +11,7 @@ import magnifier from "../Asset/magnifier.png"
 import StarRate from '../Component/starRate';
 import "../Styles/Details.css";
 import KakaoShareButton from "../Component/KakaoShareButton.js";
-import {useState,useRef} from "react";
+import {useState,useRef,useEffect} from "react";
 import {useRecoilValue} from "recoil";
 import {alcoholListState} from "../Store/selector";
 import moment from 'moment';
@@ -22,7 +22,10 @@ const Details = () => {
   const showRecentView = () => {
 
   }
-
+  const top = useRef();
+useEffect(()=>{
+  top.current.focus();
+})
 
 const [starRate,setStarRate]=useState(0);
 const [review,setReview]=useState('');
@@ -43,7 +46,7 @@ const onChange=(e)=>{
     console.log(review);
   }
   return (
-    <div /*ref={Head}*/>
+    <div ref={top}>
       <div className='details'>
         <div className='detailImage'>
         <img className="alcoholImage" src={currentAlcohol.imageUrl} alt="" />
