@@ -1,6 +1,7 @@
 .alcoholImage{
     margin-top: 30px;
     margin-bottom: 30px;
+    width: 500px;
 }
 .detailImage{
     margin-left: 30px;
@@ -16,7 +17,7 @@
 }
 .detailRight{
     text-align: left;
-    margin-left: 100px;
+    margin-left: 70px;
     display: flex;
     flex-direction: column;
 }
@@ -53,7 +54,6 @@ h1{
     display: flex;
     justify-content: center;
     border: 5px solid greenyellow;
-    border-radius: 15px;
     margin-left:50px;
     margin-right:50px;
     cursor: pointer;
@@ -66,11 +66,11 @@ h1{
     display: flex;
     flex-direction: column;
     border: 3px solid black;
-    border-radius: 15px;
     margin-top: 20px;
     margin-left: 50px;
     margin-right: 50px;
     margin-bottom: 50px;
+    height: 500px;
 }
 .rateHead{
     font-size: larger;
@@ -90,4 +90,12 @@ h1{
 }
 .rateButton{
     width:200px;
+}
+.reviewHeader{
+    text-align: left;
+    margin-left: 50px;
+}
+.alcoholName{
+    margin-left:20px;
+    font-size: 50px;
 }

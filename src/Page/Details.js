@@ -11,35 +11,45 @@ import magnifier from "../Asset/magnifier.png"
 import StarRate from '../Component/starRate';
 import "../Styles/Details.css";
 import KakaoShareButton from "../Component/KakaoShareButton.js";
-import {useState} from "react";
+import {useState,useRef} from "react";
 import {useRecoilValue} from "recoil";
 import {alcoholListState} from "../Store/selector";
+import moment from 'moment';
 const Details = () => {
   const alcoholList = useRecoilValue(alcoholListState);
-  const currentAlcohol=alcoholList[0];
+  const currentAlcohol=alcoholList[1];
   let params = useParams();
   const showRecentView = () => {
 
   }
 
+
 const [starRate,setStarRate]=useState(0);
 const [review,setReview]=useState('');
+const [nowTime,setNowtime]=useState('');
+/*
+const Head = useRef();
+React.useEffect(()=>{
+  Head.current.focus();
+},[]);
+*/
 const onChange=(e)=>{
     setReview(e.target.value)
   }
   const postReview = () => {
+    setNowtime(moment().format('YYYYMMDD HH:mm:ss'));
+    console.log(nowTime);
     console.log(starRate);
-    console.log(review)
+    console.log(review);
   }
-  const Header = React.useRef()
   return (
-    <div>
+    <div /*ref={Head}*/>
       <div className='details'>
         <div className='detailImage'>
         <img className="alcoholImage" src={currentAlcohol.imageUrl} alt="" />
         </div>
         <div className='detailRight'>
-        <h1>{currentAlcohol.name}</h1>
+        <h1 className='alcoholName'>{currentAlcohol.name}</h1>
           <div className='detailList'>
               <h6>종류: {currentAlcohol.typeofAlcohol}</h6>
               <h6>도수: {currentAlcohol.alcohol}</h6>
@@ -63,6 +73,9 @@ const onChange=(e)=>{
                         }}/>
                 <Input className='reviewInput' onChange={onChange} value={review} />
                 <Button className='rateButton' onClick={postReview}>평가 등록</Button>
+            </div>
+            <div className='reviewList'>
+                <h2 className='reviewHeader'>REVIEWS</h2>
             </div>
         </div>
       </div>
