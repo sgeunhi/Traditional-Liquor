@@ -19,7 +19,9 @@ ul.pagination-ul li {
     align-items: center;
     font-size: 1rem;
 }
-
+ul.pagination-ul li:hover {
+    cursor : pointer;
+}
 ul.pagination-ul li:first-child{
     border-radius: 5px 0 0 5px;
 }

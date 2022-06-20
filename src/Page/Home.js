@@ -47,7 +47,8 @@ const Home = () => {
   const [recentItems, setRecentItems] = useState([]);
   const data = require("../Asset/alcohol.json");
   const {name, imgUrl, price, description} = data.alcohol;
-
+  const alcoholList = useRecoilValue(alcoholListState);
+  console.log(alcoholList);
   return (
     <div style={{height: "100vh"}}>
       <div id="liquor-swiper">
