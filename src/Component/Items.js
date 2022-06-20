@@ -1,6 +1,7 @@
 import * as React from "react";
 import "../Styles/Reset.css";
 import "../Styles/Home.css";
+import {Link as RouterLink} from "react-router-dom";
 
 function Items({currentItems}) {
   // const onClickLiquor = (e) => {
@@ -12,13 +13,18 @@ function Items({currentItems}) {
     <>
       {currentItems.map((alcohol, idx) => {
         return (
-          <div className="liquor-card" onClick={() => window.location.href = `./details/${parseInt(curr_page) * 28 - 28 + idx}`}>
-            <img className="liquor-card-img" referrerPolicy="no-referrer" src={alcohol.imageUrl}/>
-            <span style={{fontWeight: "bold"}}>{alcohol.name} | {alcohol.price}원 <br></br></span>
-          </div>)
+          <RouterLink to={`/details/${1}`}>
+            <div className="liquor-card"
+                 onClick={() =>  `./details/${parseInt(curr_page) * 28 - 28 + idx}`}>
+              <img className="liquor-card-img" referrerPolicy="no-referrer" src={alcohol.imageUrl}/>
+              <span style={{fontWeight: "bold"}}>{alcohol.name} | {alcohol.price}원 <br></br></span>
+            </div>
+          </RouterLink>
+        )
       })}
     </>
   );
 }
 
+// window.location.href =
 export default Items;
