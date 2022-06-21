@@ -1,8 +1,8 @@
 export class Rate {
-    constructor(id, userId, userNickname, alcoholId, numberOfStars, reviewText, timestamp) {
+    constructor(id, userId, userName, alcoholId, numberOfStars, reviewText, timestamp) {
         this.id = id;
         this.userId = userId;
-        this.userNickname = userNickname
+        this.userName = userName
         this.alcoholId = alcoholId;
         this.numberOfStars = numberOfStars;
         this.reviewText = reviewText;
@@ -16,7 +16,7 @@ export class Rate {
     toData() {
         return {
             userId: this.userId,
-            userNickname: this.userNickname,
+            userName: this.userName,
             alcoholId: this.alcoholId,
             numberOfStars: this.numberOfStars,
             reviewText: this.reviewText,

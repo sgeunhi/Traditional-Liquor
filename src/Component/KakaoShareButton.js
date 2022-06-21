@@ -51,7 +51,7 @@ const KakaoShareButton = () => {
   }
 
   return (
-    <Button style={{color:"#ffffff", backgroundColor:"#f3dc04"}} onClick={shareKakao}>
+    <Button style={{color:"#000000", backgroundColor:"#f3dc04"}} onClick={shareKakao}>
       카카오톡 공유하기
     </Button>
   )

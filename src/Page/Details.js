@@ -6,6 +6,8 @@ import {Autocomplete, TextField} from "@mui/material"
 import SearchIcon from '@mui/icons-material/Search';
 import alcohol_icon from "../Asset/alcohol-icon.png";
 import {Link as RouterLink} from "react-router-dom";
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 import magnifier from "../Asset/magnifier.png"
 import StarRates from '../Component/StarRates';
 import "../Styles/Details.css";
@@ -31,7 +33,6 @@ const Details = () => {
   const [starRate, setStarRate] = useState(0);
   const [review, setReview] = useState('');
   const [currentAlcoholId, setCurrentAlcoholId] = useRecoilState(currentAlcoholIdState);
-  const [nowTime, setNowtime] = useState('');
   const reviewList = useRecoilValue(rateListState);
   const reviewListRefresh = useRecoilRefresher_UNSTABLE(rateListState);
   const navigate = useNavigate();
@@ -54,7 +55,6 @@ const Details = () => {
   }
   const postReview = async () => {
     const timeStamp = new Date().getTime();
-    console.log(nowTime);
     console.log(starRate);
     console.log(review);
     console.log(timeStamp)
@@ -62,6 +62,7 @@ const Details = () => {
       new Rate(
         null,
         user.uid,
+        user.displayName,
         currentAlcohol.id,
         starRate,
         review,
@@ -75,7 +76,7 @@ const Details = () => {
     <div ref={top}>
       <div className='details'>
         <div className='detailImage'>
-          <img className="alcoholImage" src={currentAlcohol.imageUrl} alt=""/>
+          <img className="alcoholImage" referrerPolicy="no-referrer" src={currentAlcohol.imageUrl} alt=""/>
         </div>
         <div className='detailRight'>
           <h1 className='alcoholName'>{currentAlcohol.name}</h1>
@@ -88,9 +89,9 @@ const Details = () => {
           </div>
         </div>
       </div>
-
-      <KakaoRecommendButton description={currentAlcohol.description} buttonTitle={'더 알아보기'}
-                                  alcohol={currentAlcohol}/>
+      <div style={{marginBottom: 20}}>
+        <KakaoRecommendButton description={currentAlcohol.description} buttonTitle={'더 알아보기'}
+                              alcohol={currentAlcohol}/>      </div>
       <br/>
       <a className='naverLink' href={currentAlcohol.detailUrl} target="_blank">
         <img src={magnifier} className='magnifier'/>
@@ -104,7 +105,7 @@ const Details = () => {
                     setStarRate(newValue);
                   }}/>
           <Input className='reviewInput' onChange={onChange} value={review}/>
-          <Button className='rateButton' onClick={postReview}>평가 등록</Button>
+          <Button className='rateButton'  onClick={postReview}>리뷰 남기기</Button>
         </div>
         <div className='reviewList'>
           <h2 className='reviewHeader'>REVIEWS</h2>
@@ -112,9 +113,45 @@ const Details = () => {
             {reviewList.map((review) => {
               return (
                 <>
-                  <StarRates starNum={review.numberOfStars}/>
-                  <p
-                    className='reviews'> {review.userNickname} :{review.reviewText} {new Date(review.timestamp).toLocaleString()}</p>
+                  <div className='reviewBox'>
+                    <StarRates starNum={review.numberOfStars}/>
+                    <Typography component="div" sx={{width: '100%'}}>
+                      <Typography component="div" sx={{
+                        display: "flex",
+                        flexDirection: "row",
+                        width: '100%',
+                      }}>
+                        <Typography component="div" sx={{
+                          display: "flex",
+                          flexDirection: "row",
+                          width: '100%',
+                          alignItems: 'center',
+                        }}>
+                          <Box sx={{fontWeight: 500, m: 1}}>{review.userName}</Box>
+                          <Box sx={{
+                            fontWeight: 'medium',
+                            padding: '8px',
+                            backgroundColor: '#b672ff',
+                            color: "#ffffff",
+                            borderRadius: '5px',
+                            m: 1,
+                          }}>
+                            {review.reviewText}</Box>
+                          <Typography component="div" sx={{
+                            display: "flex",
+                          }}> <Box sx={{
+                            fontSize: "small",
+                            fontWeight: 'light',
+                            textAlign: 'right',
+                            ml: 1
+                          }}>{new Date(review.timestamp).toLocaleString()}</Box>
+                          </Typography>
+                        </Typography>
+                      </Typography>
+                    </Typography>
+                    {/*<p*/}
+                    {/*  className='reviews'> {review.userName} : {review.reviewText} {new Date(review.timestamp).toLocaleString()}</p>*/}
+                  </div>
                 </>
               )
             })}
@@ -122,7 +159,8 @@ const Details = () => {
         </div>
       </div>
     </div>
-  );
+  )
+    ;
 };
 
 export default Details;

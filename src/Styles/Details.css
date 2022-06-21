@@ -1,28 +1,32 @@
-.alcoholImage{
+.alcoholImage {
     margin-top: 30px;
     margin-bottom: 30px;
     width: 500px;
 }
-.detailImage{
+
+.detailImage {
     margin-left: 30px;
     display: flex;
     justify-content: center;
 }
-.details{
-    margin-left:50px;
+
+.details {
+    margin-left: 50px;
     margin-top: 50px;
     margin-bottom: 30px;
     display: flex;
     justify-content: center;
 }
-.detailRight{
+
+.detailRight {
     text-align: left;
     margin-left: 70px;
     display: flex;
     flex-direction: column;
 }
-.detailList{
-    padding:20px;
+
+.detailList {
+    padding: 20px;
     margin-top: 30px;
     display: flex;
     flex-direction: column;
@@ -34,50 +38,60 @@
     height: 400px;
     text-align: left;
 }
-.description{
+
+.description {
     margin-top: 30px;
     overflow: scroll;
 }
-h1{
+
+h1 {
     font-size: 35px;
 }
-.starRate{
-    padding:50px
+
+.starRate {
+    padding: 50px
 }
-.magnifier{
+
+.magnifier {
     margin-top: 15px;
     margin-right: 10px;
-    width : 10%;
-    height: 20%; 
+    width: 10%;
+    height: 20%;
 }
-.naverLink{
+
+.naverLink {
     display: flex;
     justify-content: center;
-    border: 5px solid greenyellow;
-    margin-left:50px;
-    margin-right:50px;
+    border: 1px solid greenyellow;
+    margin-left: 50px;
+    margin-right: 50px;
     cursor: pointer;
+    align-items: center;
 }
-.naverUrl{
+
+.naverUrl {
     font-size: 20px;
     line-height: 100px;
 }
-.rate{
+
+.rate {
     display: flex;
     flex-direction: column;
-    border: 3px solid black;
+    border: 1px solid black;
     margin-top: 20px;
     margin-left: 50px;
     margin-right: 50px;
     margin-bottom: 50px;
     height: 500px;
 }
-.rateHead{
+
+.rateHead {
     font-size: larger;
     margin-top: 20px;
     height: 0px;
 }
-.rateDetails{
+
+.rateDetails {
     display: flex;
 }
 
@@ -86,28 +100,42 @@ h1{
     width: 100%;
     margin-bottom: 20px;
 }
-.rateButton{
-    width:200px;
+
+.rateButton {
+    width: 200px;
 }
-.reviewHeader{
+
+.reviewHeader {
     text-align: left;
     margin-left: 50px;
 }
-.alcoholName{
-    margin-left:20px;
+
+.alcoholName {
+    margin-left: 20px;
     font-size: 50px;
 }
-.reviewList{
+
+.reviewList {
     margin-top: 15px;
     overflow: scroll;
 }
-.reviews{
+
+.reviews {
     text-align: left;
 }
-.reviewMain{
+
+.reviewMain {
     display: flex;
     flex-direction: column;
-    margin-left:50px;
+    margin-left: 50px;
+}
+
+.reviewBox {
+    display: flex;
+    height: auto;
+    align-items: center;
+    justifyContent: 'space-between';
+}
 
 }
 .rateStar{
