@@ -51,9 +51,6 @@ function Login() {
         >
           로그인
         </Button>
-        <Link underline="hover" sx={{marginBottom:2}}component={RouterLink} to="/reset">
-          비밀번호 찾기
-        </Link>
         <Link underline="hover" component={RouterLink} to="/register">
           회원가입
         </Link>

@@ -1,7 +1,6 @@
 import {selector} from "recoil";
 import * as React from "react";
 import getAllAlcohols from "../Api/getAllAlcohols";
-import { async } from "@firebase/util";
 import getRate from "../Api/getRate";
 import { currentAlcoholIdState } from "./atom";
 

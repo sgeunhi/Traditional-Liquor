@@ -8,8 +8,12 @@ import {useRecoilValue} from "recoil";
 import RecommendItems from "../Component/RecommendItems";
 import filter from "../Entity/Filter";
 import {alcoholListState} from "../Store/selector";
+import {useNavigate} from "react-router-dom";
+import {useAuthState} from "react-firebase-hooks/auth";
+import {auth} from "../Firebase/service";
 
 const Quiz = () => {
+    const [user, loading, error] = useAuthState(auth);
     const quizData = require("../Asset/quiz-data.json");
     const mbtiData = require("../Asset/mbti.json");
     const [quizNumber, setQuizNumber] = useState(0);
@@ -17,7 +21,15 @@ const Quiz = () => {
     const [mbti, setMbti] = useState('');
     const [recommendedAlcohols, setRecommendedAlcohols] = useState([]);
     const alcoholList = useRecoilValue(alcoholListState);
+    const navigate = useNavigate();
 
+    useEffect(() => {
+        if (loading) {
+            // maybe trigger a loading screen
+            return;
+        }
+        if (!user) navigate("/");
+    }, [user, loading]);
     useEffect(() => {
         if (quizNumber === 8) {
             console.log(conditionList);

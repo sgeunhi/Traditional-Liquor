@@ -22,15 +22,11 @@ function Register() {
   const register = () => {
     if (!nickname) alert("닉네임을 입력하세요");
     registerWithEmailAndPassword(nickname, email, password)
-      .then((result) => {
-        console.log(result);
-        alert("회원가입이 완료되었습니다");
-      });
   };
 
   useEffect(() => {
     if (loading) return;
-    // if (user) navigate("/home", {replace: true});
+    if (user) navigate("/home", {replace: true});
   }, [user, loading]);
 
   return (

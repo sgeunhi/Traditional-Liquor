@@ -33,6 +33,16 @@ const Details = () => {
   const [nowTime, setNowtime] = useState('');
   const reviewList = useRecoilValue(rateListState);
   const reviewListRefresh = useRecoilRefresher_UNSTABLE(rateListState);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (loading) {
+      // maybe trigger a loading screen
+      return;
+    }
+    if (!user) navigate("/");
+  }, [user, loading]);
+
   useEffect(() => {
     top.current.focus();
     setCurrentAlcoholId(currentAlcohol.id);
@@ -102,7 +112,7 @@ const Details = () => {
                 <>
                   <StarRates starNum={review.numberOfStars}/>
                   <p
-                    className='reviews'> {review.userId} :{review.reviewText} {new Date(review.timestamp).toLocaleString()}</p>
+                    className='reviews'> {review.userNickname} :{review.reviewText} {new Date(review.timestamp).toLocaleString()}</p>
                 </>
               )
             })}
