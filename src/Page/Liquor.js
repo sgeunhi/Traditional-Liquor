@@ -22,12 +22,10 @@ function Liquor(){
     const params = useParams();
     useEffect(()=> {
         if (parseInt(params.id)===1){
-            setFilteredItemsId(1);
-            
+            setFilteredItemsId(1);   
             setFilteredAlcoholList(alcoholList.filter(e => 
                 e.typeofAlcohol.includes("탁주") || e.typeofAlcohol.includes("막걸리")
             ));   
-
         }   else if (parseInt(params.id) === 2){
             setFilteredItemsId(2);
             setFilteredAlcoholList(alcoholList.filter(e => 
@@ -42,13 +40,13 @@ function Liquor(){
             setFilteredItemsId(4);
             setFilteredAlcoholList(alcoholList.filter(e => 
                 e.typeofAlcohol.includes("증류") || e.typeofAlcohol.includes("소주") || e.typeofAlcohol.includes("리큐르")
-        ));
+            ));
         }
     }, [params.id, filteredItemsId])
 
     return (
         <>
-            <FilteredPaginatedItems itemsPerPage={20} />
+            <FilteredPaginatedItems itemsPerPage={28} />
         </>
     )
 }
