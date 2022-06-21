@@ -56,7 +56,7 @@ const Quiz = () => {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: '10%'
+        marginTop: '30%'
     };
 
     const recommendLiquorStyle = {
