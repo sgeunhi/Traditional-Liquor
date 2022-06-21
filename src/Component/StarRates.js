@@ -13,6 +13,7 @@ const StarRates=(starNum)=>{
     }
     console.log(result)
     return result
+    
 }
 export default StarRates;
 

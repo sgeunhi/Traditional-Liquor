@@ -13,7 +13,6 @@ import KakaoShareButton from "../Component/KakaoShareButton.js";
 import {useState,useRef,useEffect} from "react";
 import {useRecoilValue,useRecoilState,useRecoilRefresher_UNSTABLE} from "recoil";
 import {alcoholListState, rateListState} from "../Store/selector";
-import { dummyAlcoholListState } from '../Store/atom';
 import getRate from "../Api/getRate"
 import postRate from "../Api/postRate"
 import {useAuthState} from "react-firebase-hooks/auth";
@@ -25,9 +24,11 @@ const Details = () => {
   const alcoholList = useRecoilValue(alcoholListState);
   //const alcoholList = useRecoilValue(dummyAlcoholListState);
 
-    let params = useParams();
-  const currentAlcohol = alcoholList.filter(_alcohol => _alcohol.id === params)[0];
-
+  let params = useParams();
+  const currentAlcohol = alcoholList.filter(_alcohol => _alcohol.id === params.id)[0];
+  console.log(params);
+  console.log("asdasd");
+  console.log(currentAlcohol.name);
   const top = useRef();
   const [starRate,setStarRate]=useState(0);
 const [review,setReview]=useState('');
@@ -103,8 +104,10 @@ const onChange=(e)=>{
               {reviewList.map((review) => {
                     return (
                           <>
-                          <StarRates starNum={review.numberOfStars} />
-                          <p className='reviews'> {review.userId} :{review.reviewText} {review.timestamp.toLocalString()}</p>
+                          <div className='reviewBox'>
+                          <StarRates className='reviewStar' starNum={review.numberOfStars} />
+                          <p className='reviews'> {review.userId} :    {review.reviewText} {new Date(review.timestamp).toLocaleString()}</p>
+                          </div>
                           </>
                     )
                 })}

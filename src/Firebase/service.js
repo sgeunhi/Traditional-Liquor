@@ -22,16 +22,25 @@ import {
   setDoc,
   addDoc,
 } from "firebase/firestore";
-
 const firebaseConfig = {
-  apiKey: "AIzaSyD0but9mklEoUTAJKEX7aTxcamlvLr6WgE",
-  authDomain: "webprogramming-a287a.firebaseapp.com",
-  projectId: "webprogramming-a287a",
-  storageBucket: "webprogramming-a287a.appspot.com",
-  messagingSenderId: "486204863182",
-  appId: "1:486204863182:web:9deb56dfa940088566d69f",
-  measurementId: "G-LVRPXLYL9B"
+  apiKey: "AIzaSyCdEhXlF6OpDzXQ9mOl-nOVv_zYHsjp7vU",
+  authDomain: "last-wepprogramming.firebaseapp.com",
+  projectId: "last-wepprogramming",
+  storageBucket: "last-wepprogramming.appspot.com",
+  messagingSenderId: "458432658680",
+  appId: "1:458432658680:web:8c304ea05b70e1ea5c8f0d",
+  measurementId: "G-SKGD7Z2LG2"
 };
+
+// const firebaseConfig = {
+//   apiKey: "AIzaSyD0but9mklEoUTAJKEX7aTxcamlvLr6WgE",
+//   authDomain: "webprogramming-a287a.firebaseapp.com",
+//   projectId: "webprogramming-a287a",
+//   storageBucket: "webprogramming-a287a.appspot.com",
+//   messagingSenderId: "486204863182",
+//   appId: "1:486204863182:web:9deb56dfa940088566d69f",
+//   measurementId: "G-LVRPXLYL9B"
+// };
 // const firebaseConfig = {
 //   apiKey: "AIzaSyCZjgDWb8WI1FhxDPS76thU40G37aFV30o",
 //   authDomain: "tempwebprogramming.firebaseapp.com",

@@ -112,3 +112,9 @@ h1{
     margin-left:50px;
 
 }
+.reviewStar{
+    display: flex;
+}
+.reviewBox{
+    display: flex;
+}
