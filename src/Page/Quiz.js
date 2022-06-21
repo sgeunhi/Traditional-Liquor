@@ -41,74 +41,25 @@ const Quiz = () => {
         setQuizNumber(quizNumber + 1);
     }
 
-    const questionContainerStyle = {
-        height: '70vh',
-        display: 'flex',
-        flexDirection: 'column',
-        flexWrap: 'wrap',
-        alignItems: 'center',
-        justifyContent: 'center'
-    };
-
-    const resultContainerStyle = {
-        height: '70vh',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: '30%'
-    };
-
-    const recommendLiquorStyle = {
-        display: 'flex',
-        flexDirection: 'row',
-        marginTop: '10%'
-    }
-
-    const questionStyle = {
-        marginBottom: '5%'
-    };
-
-    const answerStyle = {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center'
-    };
-
-    const buttonStyle = {
-        fontSize: '1rem',
-        fontWeight: '800',
-        height: '6em',
-        width: '24rem',
-        margin: '1em'
-    };
-
-    const questionCountStyle = {
-        marginTop: '1rem',
-        fontSize: '1.3rem',
-        fontWeight: '800'
-    };
-
     return (
         <>
-            <div id="question-container" style={questionContainerStyle}>
+            <div id="question-container">
                 {
                     quizNumber === quizData.length ?
-                        <div id="result-container" style={resultContainerStyle}>
+                        <div id="result-container">
                             <Typography variant="h6" fontWeight="bold"
-                                        style={questionStyle}>술 MBTI 결과</Typography>
+                                        style={{ marginBottom: '5%' }}>술 MBTI 결과</Typography>
                             <Typography variant="h5"
-                                        style={questionStyle}>🍷{mbtiData[mbti]}🥂 인</Typography>
+                                        style={{ marginBottom: '5%' }}>🍷{mbtiData[mbti]}🥂 인</Typography>
 
                             {recommendedAlcohols.length === 0 ?
                                 <Typography variant="h6"
-                                            style={questionStyle}>당신이 좋아할만한 술을 찾지 못했어요.😭</Typography>
+                                            style={{ marginBottom: '5%' }}>당신이 좋아할만한 술을 찾지 못했어요.😭</Typography>
                                 :
                                 <>
                                     <Typography variant="h6"
-                                                style={questionStyle}>당신에게 아래의 술들을 추천합니다!</Typography>
-                                    <div id="recommend-liquor" style={recommendLiquorStyle}>
+                                                style={{ marginBottom: '5%' }}>당신에게 아래의 술들을 추천합니다!</Typography>
+                                    <div id="recommend-liquor">
                                         <RecommendItems mbtiCharacter={mbtiData[mbti]} alcohols={recommendedAlcohols}/>
                                     </div>
                                 </>
@@ -117,17 +68,17 @@ const Quiz = () => {
                         <>
                             <div id="question">
                                 <Typography variant="h5"
-                                            style={questionStyle}>{quizData[quizNumber].question}</Typography>
+                                            style={{ marginBottom: '5%' }}>{quizData[quizNumber].question}</Typography>
                             </div>
-                            <div id="answer" style={answerStyle}>
-                                <Button variant="outlined" color="secondary" size="large" style={buttonStyle}
+                            <div id="answer">
+                                <Button id="answer-button" variant="outlined" color="secondary" size="large"
                                         onClick={() => onAnswerSelected(quizNumber, quizData[quizNumber].answers[0])}>{quizData[quizNumber].answers[0].text}</Button>
-                                <Button variant="outlined" color="secondary" size="large" style={buttonStyle}
+                                <Button id="answer-button" variant="outlined" color="secondary" size="large"
                                         onClick={() => onAnswerSelected(quizNumber, quizData[quizNumber].answers[1])}>{quizData[quizNumber].answers[1].text}</Button>
                                 <LinearProgress style={{width: '24rem'}} variant="determinate" color="secondary"
                                                 value={(quizNumber + 1) / quizData.length * 100}/>
-                                <Typography
-                                    style={questionCountStyle}>{`${quizNumber + 1} / ${quizData.length}`}</Typography>
+                                <Typography id="question-count">
+                                    {`${quizNumber + 1} / ${quizData.length}`}</Typography>
                             </div>
                         </>
                 }
