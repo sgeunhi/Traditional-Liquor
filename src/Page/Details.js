@@ -21,8 +21,8 @@ import { currentAlcoholIdState ,dummyAlcoholListState} from '../Store/atom';
 
 const Details = () => {
   const [user, loading, error] = useAuthState(auth);
-  //const alcoholList = useRecoilValue(alcoholListState);
-  const alcoholList = useRecoilValue(dummyAlcoholListState);
+  const alcoholList = useRecoilValue(alcoholListState);
+  //const alcoholList = useRecoilValue(dummyAlcoholListState);
     let params = useParams();
   const currentAlcohol = alcoholList.filter(_alcohol => _alcohol.id === params)[0];
   const top = useRef();
