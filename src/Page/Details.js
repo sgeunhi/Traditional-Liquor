@@ -25,6 +25,7 @@ const Details = () => {
   const alcoholList = useRecoilValue(dummyAlcoholListState);
     let params = useParams();
   const currentAlcohol = alcoholList.filter(_alcohol => _alcohol.id === params)[0];
+
   const top = useRef();
   const [starRate,setStarRate]=useState(0);
 const [review,setReview]=useState('');
@@ -96,6 +97,7 @@ const onChange=(e)=>{
             </div>
             <div className='reviewList'>
               <h2 className='reviewHeader'>REVIEWS</h2>
+              <div className='reviewMain'>
               {reviewList.map((review) => {
                     return (
                           <>
@@ -104,6 +106,7 @@ const onChange=(e)=>{
                           </>
                     )
                 })}
+              </div>
             </div>
         </div>
       </div>

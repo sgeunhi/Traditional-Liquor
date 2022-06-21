@@ -106,3 +106,9 @@ h1{
 .reviews{
     text-align: left;
 }
+.reviewMain{
+    display: flex;
+    flex-direction: column;
+    margin-left:50px;
+
+}
