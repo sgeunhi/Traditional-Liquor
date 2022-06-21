@@ -7,7 +7,7 @@ import {useNavigate, useParams} from 'react-router-dom';
 import {useEffect} from "react";
 import {useRecoilValue, useRecoilState} from "recoil";
 import {alcoholListState} from "../Store/selector";
-import {dummyAlcoholListState, filteredAlcoholListState, filteredItemsIdState} from "../Store/atom";
+import {dummyAlcoholListState, filteredAlcoholListState, filteredPageCountState, filteredItemOffsetState, filteredItemsIdState} from "../Store/atom";
 
 import FilteredItems from "../Component/FilteredItems";
 import FilteredPaginatedItems from "../Component/FilteredPaginatedItems";
@@ -20,6 +20,8 @@ function Liquor() {
   // const dummyAlcoholList = useRecoilValue(dummyAlcoholListState)
   const [filteredAlcoholList, setFilteredAlcoholList] = useRecoilState(filteredAlcoholListState);
   const [filteredItemsId, setFilteredItemsId] = useRecoilState(filteredItemsIdState);
+  const [filteredItemOffset, setFilteredItemOffset] = useRecoilState(filteredItemOffsetState);
+  const [filteredPageCount, setFilteredPageCount] = useRecoilState(filteredPageCountState);
   let filteredLiquor = null;
   const params = useParams();
   const navigate = useNavigate();
@@ -45,6 +47,7 @@ function Liquor() {
         e.typeofAlcohol.includes("청주") || e.typeofAlcohol.includes("약주") || e.typeofAlcohol.includes("기타주류")
       ));
     } else if (parseInt(params.id) === 3) {
+        
       setFilteredItemsId(3);
       setFilteredAlcoholList(alcoholList.filter(e =>
         e.typeofAlcohol.includes("과실") || e.typeofAlcohol.includes("와인") || e.typeofAlcohol.includes("브랜디")
@@ -55,6 +58,8 @@ function Liquor() {
         e.typeofAlcohol.includes("증류") || e.typeofAlcohol.includes("소주") || e.typeofAlcohol.includes("리큐르")
       ));
     }
+    setFilteredItemOffset(0);
+    setFilteredPageCount(1);
   }, [params.id, filteredItemsId])
 
   return (

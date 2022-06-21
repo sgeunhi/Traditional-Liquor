@@ -319,6 +319,7 @@ footer {
   display: flex;
   flex-direction: column;
   text-decoration: none;
+  color: inherit;
   width: 20%;
   height: 96%;
 }
@@ -384,9 +385,7 @@ footer {
 .liquor-card-wrapper {
   display: flex;
   flex-direction: row;
-  align-items: center;
   flex-flow: wrap;
-  height: 350vh;
   width: 90%;
   margin: auto;
 }
@@ -395,6 +394,8 @@ footer {
   margin: 0 2.5% 0 2.5%;
   height: 45vh;
   margin-bottom: 2%;
+  color: inherit;
+  text-decoration: none;
 }
 .liquor-card-wrapper .liquor-card:hover {
   opacity: 80%;

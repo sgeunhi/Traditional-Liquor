@@ -17,6 +17,7 @@ function FilteredPaginatedItems({itemsPerPage}){
     const [currentFilteredAlcoholList, setCurrentFilteredAlcoholList] = useRecoilState(currentFilteredAlcoholListState);
     const [filteredItemOffset, setFilteredItemOffset] = useRecoilState(filteredItemOffsetState);
     const filteredAlcoholList = useRecoilValue(filteredAlcoholListState);
+    const scrollToRef = useRef();
     useEffect(()=> {
         const filteredEndOffset = filteredItemOffset + itemsPerPage;
         setCurrentFilteredAlcoholList(filteredAlcoholList.slice(filteredItemOffset, filteredEndOffset));
@@ -28,7 +29,7 @@ function FilteredPaginatedItems({itemsPerPage}){
     }
     return (
         <>
-            <div className="liquor-card-wrapper">
+            <div ref={scrollToRef} className="liquor-card-wrapper">
                 <FilteredItems currentItems={currentFilteredAlcoholList}/>
             </div>
             <div className="footer">
@@ -44,7 +45,7 @@ function FilteredPaginatedItems({itemsPerPage}){
                 activeClassName={"currentPage"}
                 previousClassName={"pageLabel-btn"}
                 nextClassName={"pageLabel-btn"}
-            
+                onClick = {()=>scrollToRef.current.scrollIntoView({behavior: 'smooth'})}
                 />
             </div> 
         </>
