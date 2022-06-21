@@ -10,7 +10,7 @@ import {categoryState, itemOffsetState} from "../Store/atom";
 import { useNavigate } from 'react-router-dom';
 import "../Styles/Home.scss"
 import "../Styles/Reset.css";
-// import {dummyAlcoholListState} from '../Store/atom';
+import {dummyAlcoholListState} from '../Store/atom';
 import Paper from '@mui/material/Paper';
 import Divider from '@mui/material/Divider';
 import MenuList from '@mui/material/MenuList';
@@ -27,18 +27,14 @@ const Layout = () => {
   const onClickNavigateDetail = () => {
     const box = document.querySelector('#combo-box-demo');
     const idx = alcoholList.findIndex(e => e.name === box.value);
-    const id = alcoholList[idx].id;
-    if (localStorage.getItem("liquors")=== null){
-      const liquors = [];
-      liquors.push = idx;
-      localStorage.setItem("liquors", JSON.stringify(liquors));
+
+    if (idx===-1){
+      alert("Invalid liquor");
+      return;
     } else {
-      const liquors = JSON.parse(localStorage.getItem("liquors"));
-      liquors.push(idx);
-      localStorage.setItem("liquors", JSON.stringify(liquors));
+      const id = alcoholList[idx].id;
+      navigate(`/details/${id}`);
     }
-    
-    navigate(`/details/${id}`);
   }
   alcoholNameList.sort();
 
@@ -51,25 +47,18 @@ const Layout = () => {
   const handleCategoryClick = (event) => {
     switch (event.target.innerText){
       case("탁주(막걸리)"):
-        console.log(1);
-        setItemOffset((1* 25) % 500);
-        setCategory(1);
+        navigate("/liquor/1");
         break;
       case("약주/청주"):
-        setItemOffset((2* 25) % 500);
-        setCategory(6);
+        navigate("/liquor/2");
         break;
       case("과실주/와인"):
-        setItemOffset((3* 25) % 500);
-        setCategory(11);
+        navigate("/liquor/3");
         break;
       case("증류주"):
-        setItemOffset((4* 25) % 500);
-        setCategory(16);
+        navigate("/liquor/4");
         break;
       default:
-        
-        console.log(100);
         break;
     }
   }
@@ -77,7 +66,10 @@ const Layout = () => {
     const recentView = document.querySelector('#recent-view');
     recentView.innerText = "hello im"
   }
-  
+  const onClickNavigateHome = () => {
+    console.log('hello')
+    navigate("/home");
+  }
   return (
     <div>
       <header>
@@ -86,22 +78,6 @@ const Layout = () => {
             <span>Snu-Liquor | 전통주</span>
           </div>
           <div id="header-nav-right">
-            <Button id="recent-view-btn" style={{height: "60%", color: '#707070'}} onClick={() => showRecentView()}>최근에 본 목록
-            </Button>
-            {/* <Paper id="recent-view-paper" sx={{ width: 100 }}>
-                <MenuList dense>
-                  <MenuItem>
-                    <ListItemText inset>Single</ListItemText>
-                  </MenuItem>
-                  <MenuItem>
-                    <ListItemText inset>1.15</ListItemText>
-                  </MenuItem>
-                  <MenuItem>
-                    <ListItemText inset>Double</ListItemText>
-                  </MenuItem>
-                </MenuList>
-              </Paper> */}
-            <span style={{height: "40%", verticalAlign: "center"}}>|</span>
             <Button id="logout-btn" style={{height: "60%", color: '#707070'}} onClick={() => logout()}>로그아웃</Button>
           </div>
         </nav>
@@ -123,19 +99,16 @@ const Layout = () => {
                 }}
                 renderInput={(params) => <TextField {...params} label="술을 검색해보세요..." size="small"/>}
               />
-              
-              
                 <SearchIcon id="search-icon" style={{fontSize: "2rem"}} onClick={() => onClickNavigateDetail()}/>
               
             </div>
             <div className="center-top-container">
-              <img id="alcohol-icon" src={alcohol_icon} alt="alcohol" onClick={() => window.location.href="/home"}/>
+              <img id="alcohol-icon" src={alcohol_icon} alt="alcohol" onClick={() => onClickNavigateHome()}/>
               <span id="site-name" style={{fontSize: "1.4rem", color: "black"}}>Snu-Liquor</span>
             </div>
             <div className="left-top-container">
               <RouterLink id="quiz" style={{borderRadius: "3%"}} component={RouterLink} to="/quiz">술 MBTI 검사하러
                 가기</RouterLink>
-              {/* <Button id="quiz" style={{height : "60%", backgroundColor : "purple", border : "1px solid black", color : 'white'}} onClick={() => showRecentView()}>술 MBTI 검사하기</Button> */}
             </div>
           </div>
           <div className="header-menu">

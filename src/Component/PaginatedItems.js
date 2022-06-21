@@ -8,7 +8,7 @@ import Items from "./Items";
 import "../Styles/Home.scss";
 import "../Styles/Pagination.css"
 import "../Styles/Reset.css";
-// import {dummyAlcoholListState} from '../Store/atom';
+import {dummyAlcoholListState} from '../Store/atom';
 
 function PaginatedItems({itemsPerPage}) {
   const [pageCount, setPageCount] = useRecoilState(pageCountState);

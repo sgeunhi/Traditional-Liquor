@@ -32,7 +32,7 @@ import {useRecoilValue, useRecoilState} from "recoil";
 import {alcoholListState} from "../Store/selector";
 import PaginatedItems from "../Component/PaginatedItems";
 import { categoryState } from '../Store/atom';
-// import {dummyAlcoholListState} from '../Store/atom';
+import {dummyAlcoholListState} from '../Store/atom';
 
 const Home = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -155,27 +155,10 @@ const Home = () => {
           
           {randomHot.map(rand => 
             <RouterLink className="popular" component={RouterLink} to={`/details/${alcoholList[rand].id}`}>
-            <img className="popular-img" src={alcoholList[rand].imageUrl}/>
-            
-            <span className="popular-text">{alcoholList[rand].name} | {alcoholList[rand].price} </span>
+            <img className="popular-img" referrerPolicy="no-referrer" src={alcoholList[rand].imageUrl}/>
+            <span className="popular-text">{alcoholList[rand].name} | {alcoholList[rand].price}원 </span>
           </RouterLink>  
             )}
-          {/* <RouterLink className="popular" component={RouterLink} to="/details/2">
-            <img className="popular-img" src={imgUrl}/>
-            <span className="popular-text">{name} | {price} <br></br> {description}</span>
-          </RouterLink>
-          <RouterLink className="popular" component={RouterLink} to="/quiz">
-            <img className="popular-img" src={imgUrl}/>
-            <span className="popular-text">{name} | {price} <br></br> {description}</span>
-          </RouterLink>
-          <RouterLink className="popular" component={RouterLink} to="/quiz">
-            <img className="popular-img" src={imgUrl}/>
-            <span className="popular-text">{name} | {price} <br></br> {description}</span>
-          </RouterLink>
-          <RouterLink className="popular" component={RouterLink} to="/quiz">
-            <img className="popular-img" src={imgUrl}/>
-            <span className="popular-text">{name} | {price} <br></br> {description}</span>
-          </RouterLink> */}
         </div>
       </div>
       <div className="latest-news">
@@ -205,14 +188,6 @@ const Home = () => {
       <h1 style={{fontSize: "200%"}} id="liquor-card-wrapper-text"><span style={{fontWeight: "bold"}}>전통주</span> 둘러보기
       </h1>
       <PaginatedItems itemsPerPage={28}/>
-      {/*<footer>*/}
-      {/*  /!* <span><a href="https://www.flaticon.com/kr/free-icons/" title="파티 아이콘">파티 아이콘  제작자: photo3idea_studio - Flaticon</a></span>*/}
-      {/*  <span><a href="https://www.flaticon.com/free-icons/wine" title="wine icons">Wine icons created by Freepik - Flaticon</a></span>*/}
-      {/*  <span><a href="https://www.flaticon.com/free-icons/group" title="group icons">Group icons created by srip - Flaticon</a></span>*/}
-      {/*  <span><a href="https://www.flaticon.com/free-icons/meal" title="meal icons">Meal icons created by Darius Dan - Flaticon</a></span>*/}
-      {/*  <span><a href="https://www.flaticon.com/free-icons/newspaper" title="newspaper icons">Newspaper icons created by Freepik - Flaticon</a></span>*/}
-      {/*  <span><a href="https://www.flaticon.com/kr/free-icons/" title="막걸리 아이콘">막걸리 아이콘  제작자: Darius Dan - Flaticon</a></span> *!/*/}
-      {/*</footer>*/}
     </div>
 
   );
