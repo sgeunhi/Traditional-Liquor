@@ -20,10 +20,11 @@ import ListItemText from '@mui/material/ListItemText';
 import Check from '@mui/icons-material/Check';
 
 const Layout = () => {
-  const navigate = useNavigate();  
+  const navigate = useNavigate();
   const alcoholList = useRecoilValue(alcoholListState);
   // const alcoholList = useRecoilValue(dummyAlcoholListState);
   const alcoholNameList = alcoholList.map(e => e['name']);
+
   const onClickNavigateDetail = () => {
     const box = document.querySelector('#combo-box-demo');
     const idx = alcoholList.findIndex(e => e.name === box.value);
@@ -40,7 +41,7 @@ const Layout = () => {
 
   const [itemOffset, setItemOffset] = useRecoilState(itemOffsetState);
 
-  const [category, setCategory] = useRecoilState(categoryState);  
+  const [category, setCategory] = useRecoilState(categoryState);
 
 
 
@@ -51,6 +52,7 @@ const Layout = () => {
         break;
       case("약주/청주"):
         navigate("/liquor/2");
+
         break;
       case("과실주/와인"):
         navigate("/liquor/3");
@@ -60,7 +62,10 @@ const Layout = () => {
         break;
       default:
         break;
+
     }
+
+
   }
   const showRecentView = () => {
     const recentView = document.querySelector('#recent-view');
@@ -100,7 +105,7 @@ const Layout = () => {
                 renderInput={(params) => <TextField {...params} label="술을 검색해보세요..." size="small"/>}
               />
                 <SearchIcon id="search-icon" style={{fontSize: "2rem"}} onClick={() => onClickNavigateDetail()}/>
-              
+
             </div>
             <div className="center-top-container">
               <img id="alcohol-icon" src={alcohol_icon} alt="alcohol" onClick={() => onClickNavigateHome()}/>
