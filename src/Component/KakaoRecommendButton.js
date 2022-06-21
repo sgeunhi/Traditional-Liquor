@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import {Button} from "@mui/material";
 
-const KakaoRecommendButton = ({mbtiCharacter, alcohol}) => {
+const KakaoRecommendButton = ({description, buttonTitle, alcohol}) => {
     const url = window.location.href;
 
     const initKakao = () => {
@@ -22,7 +22,7 @@ const KakaoRecommendButton = ({mbtiCharacter, alcohol}) => {
             objectType: 'feed',
             content: {
                 title: `${alcohol.name} 을(를) 추천합니다!`,
-                description:`${mbtiCharacter}인 당신에게 추천하는 전통술!`,
+                description: description,
                 imageUrl: alcohol.imageUrl,
                 link:{
                     mobileWebUrl:url,
@@ -35,7 +35,7 @@ const KakaoRecommendButton = ({mbtiCharacter, alcohol}) => {
             },
             buttons: [
                 {
-                    title: '술 MBTI로 전통술 추천받기',
+                    title: buttonTitle,
                     link: {
                         mobileWebUrl:url,
                         webUrl:url,
