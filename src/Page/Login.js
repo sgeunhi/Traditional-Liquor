@@ -30,7 +30,7 @@ function Login() {
         <Typography variant="body1" color="#545454">or</Typography>
         <TextField
           label="Email"
-          sx={{width: 260, height: 40, marginBottom: 2}}
+          sx={{width: 260, height: 40, marginBottom: 3}}
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -38,7 +38,7 @@ function Login() {
         />
         <TextField
           label="Password"
-          sx={{width: 260, height: 40, marginBottom: 3.5}}
+          sx={{width: 260, height: 40, marginBottom: 5}}
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -46,7 +46,7 @@ function Login() {
         />
         <Button
           variant="contained"
-          sx={{width: 260, height: 40, marginBottom:2}}
+          sx={{width: 260, height: 40, marginBottom:3}}
           onClick={() => logInWithEmailAndPassword(email, password)}
         >
           로그인
