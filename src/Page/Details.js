@@ -87,8 +87,7 @@ const Details = () => {
       <div className='rate'>
         <h5 className='rateHead'>이 술을 평가해주세요!</h5>
         <div className='rateDetails'>
-          <Rating className='starRate' name="simple-controlled"
-                  value={starRate}
+          <Rating className="rateStar" name="size-medium" defaultValue={0} size="small" value={starRate}
                   onChange={(event, newValue) => {
                     setStarRate(newValue);
                   }}/>

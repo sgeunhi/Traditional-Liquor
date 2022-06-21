@@ -80,9 +80,7 @@ h1{
 .rateDetails{
     display: flex;
 }
-.starRate{
-    width:100px;
-}
+
 .reviewInput{
     margin-left: 10px;
     width: 100%;
@@ -111,4 +109,7 @@ h1{
     flex-direction: column;
     margin-left:50px;
 
+}
+.rateStar{
+    margin-left:30px;
 }
