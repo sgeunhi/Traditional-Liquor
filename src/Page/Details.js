@@ -18,6 +18,7 @@ import postRate from "../Api/postRate"
 import {useAuthState} from "react-firebase-hooks/auth";
 import {Rate} from "../Entity/Rate"
 import {currentAlcoholIdState, dummyAlcoholListState} from '../Store/atom';
+import KakaoRecommendButton from "../Component/KakaoRecommendButton";
 
 const Details = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -88,7 +89,8 @@ const Details = () => {
         </div>
       </div>
 
-      <KakaoShareButton/>
+      <KakaoRecommendButton description={currentAlcohol.description} buttonTitle={'더 알아보기'}
+                                  alcohol={currentAlcohol}/>
       <br/>
       <a className='naverLink' href={currentAlcohol.detailUrl} target="_blank">
         <img src={magnifier} className='magnifier'/>
