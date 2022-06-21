@@ -329,6 +329,7 @@ footer{
             display:flex;
             flex-direction : column;
             text-decoration: none;
+            color: inherit;
             width : 20%;
             height : 96%;
             &:hover{
@@ -405,6 +406,8 @@ footer{
         margin : 0 2.5% 0 2.5%;
         height : 45vh;
         margin-bottom : 2%;
+        color: inherit;
+        text-decoration: none;
         &:hover{
             opacity : 80%;
             cursor : pointer;
@@ -412,7 +415,6 @@ footer{
         .liquor-div{
             width : 100%;
             height : 100%;
-            text-decoration: none;
             .liquor-card-img{
                 width : 100%;
                 max-height : 85%;

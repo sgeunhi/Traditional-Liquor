@@ -50,7 +50,7 @@ const Home = () => {
   const {name, imgUrl, price, description} = data.alcohol;
   const alcoholList = useRecoilValue(alcoholListState);
   // const alcoholList = useRecoilValue(dummyAlcoholListState);
-  
+
   const randomHot = [];
   while(randomHot.length < 4){
     const rand = Math.floor(Math.random() * 100);
@@ -62,7 +62,7 @@ const Home = () => {
   useEffect(()=> {
     if (category !== 0){
       const liquors = document.querySelector('#liquor-card-wrapper-text');
-      liquors.scrollIntoView();  
+      liquors.scrollIntoView();
     }
     // const liquors = document.querySelector('#liquor-card-wrapper-text');
     // liquors.scrollIntoView();
@@ -152,12 +152,12 @@ const Home = () => {
         <h1 style={{fontSize: "200%"}}>현재 <span style={{color: "#bb17ff"}}>HOT</span>한 주류</h1>
         <div className="popular-wrapper">
           {/* <div className="popular"> */}
-          
-          {randomHot.map(rand => 
+
+          {randomHot.map(rand =>
             <RouterLink className="popular" component={RouterLink} to={`/details/${alcoholList[rand].id}`}>
             <img className="popular-img" referrerPolicy="no-referrer" src={alcoholList[rand].imageUrl}/>
             <span className="popular-text">{alcoholList[rand].name} | {alcoholList[rand].price}원 </span>
-          </RouterLink>  
+          </RouterLink>
             )}
         </div>
       </div>
@@ -189,7 +189,6 @@ const Home = () => {
       </h1>
       <PaginatedItems itemsPerPage={28}/>
     </div>
-
   );
 };
 
