@@ -4,7 +4,7 @@ import {filteredPageCountState, currentFilteredAlcoholListState, filteredItemOff
 import {useRecoilState, useRecoilValue} from "recoil";
 import {useEffect, useRef} from "react";
 
-import FilteredItems from "./Items";
+import FilteredItems from "./FilteredItems";
 
 import "../Styles/Home.scss";
 import "../Styles/Pagination.css"
