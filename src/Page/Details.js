@@ -18,14 +18,16 @@ import getRate from "../Api/getRate"
 import postRate from "../Api/postRate"
 import {useAuthState} from "react-firebase-hooks/auth";
 import {Rate} from "../Entity/Rate"
-import { currentAlcoholIdState } from '../Store/atom';
+import { currentAlcoholIdState ,dummyAlcoholListState} from '../Store/atom';
 
 const Details = () => {
   const [user, loading, error] = useAuthState(auth);
-  // const alcoholList = useRecoilValue(alcoholListState);
-  const alcoholList = useRecoilValue(dummyAlcoholListState);
+  const alcoholList = useRecoilValue(alcoholListState);
+  //const alcoholList = useRecoilValue(dummyAlcoholListState);
+
     let params = useParams();
-  const currentAlcohol=alcoholList[params.id];
+  const currentAlcohol = alcoholList.filter(_alcohol => _alcohol.id === params)[0];
+
   const top = useRef();
   const [starRate,setStarRate]=useState(0);
 const [review,setReview]=useState('');
@@ -97,14 +99,16 @@ const onChange=(e)=>{
             </div>
             <div className='reviewList'>
               <h2 className='reviewHeader'>REVIEWS</h2>
+              <div className='reviewMain'>
               {reviewList.map((review) => {
                     return (
                           <>
                           <StarRates starNum={review.numberOfStars} />
-                          <p className='reviews'> {review.userId} :{review.reviewText} {review.timestamp.toLocaleString()}</p>
+                          <p className='reviews'> {review.userId} :{review.reviewText} {review.timestamp.toLocalString()}</p>
                           </>
                     )
                 })}
+              </div>
             </div>
         </div>
       </div>

@@ -1,10 +1,10 @@
-/* .right-top-container {
+.right-top-container {
     visibility: hidden;
 }
 
 .left-top-container {
     visibility: hidden;
-} */
+}
 
 .left-top-container #home {
     position: absolute;
@@ -21,10 +21,10 @@
     color: black;
 }
 
-/* #liquor-list {
+#liquor-list {
     visibility: collapse;
-} */
-/* 
+}
+
 .header-menu::before {
     font-weight: bold;
     font-size: 18px;
@@ -32,7 +32,7 @@
     content: "술 MBTI 검사하기";
     position: relative;
     top: 1.8em;
-} */
+}
 
 .liquor-card {
     width: 10rem;
