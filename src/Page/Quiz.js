@@ -30,6 +30,7 @@ const Quiz = () => {
         }
         if (!user) navigate("/");
     }, [user, loading]);
+
     useEffect(() => {
         if (quizNumber === 8) {
             console.log(conditionList);

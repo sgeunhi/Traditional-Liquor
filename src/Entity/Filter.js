@@ -8,8 +8,15 @@ const filter = {
     cheap:  alcohol => alcohol.price < 10000,
     highAlcohol:  alcohol => alcohol.alcohol >= 15,
     lowAlcohol:  alcohol => alcohol.alcohol < 15,
-    young:  alcohol => alcohol.typeofAlcohol.includes('과실주') || alcohol.typeofAlcohol.includes('리큐르'),
-    old:  alcohol => alcohol.typeofAlcohol.includes('탁주') || alcohol.typeofAlcohol.includes('소주')
+    young:  alcohol => alcohol.typeofAlcohol.includes('과실') ||
+        alcohol.typeofAlcohol.includes('리큐르') ||
+        alcohol.typeofAlcohol.includes('브랜디') ||
+        alcohol.typeofAlcohol.includes('와인'),
+    old:  alcohol => alcohol.typeofAlcohol.includes('탁주') ||
+        alcohol.typeofAlcohol.includes('막걸리') ||
+        alcohol.typeofAlcohol.includes('약주') ||
+        alcohol.typeofAlcohol.includes('청주') ||
+        alcohol.typeofAlcohol.includes('소주')
 }
 
 export default filter;
