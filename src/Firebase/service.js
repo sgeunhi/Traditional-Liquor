@@ -23,6 +23,16 @@ import {
   addDoc,
 } from "firebase/firestore";
 
+//
+// const firebaseConfig = {
+//   apiKey: "AIzaSyD0but9mklEoUTAJKEX7aTxcamlvLr6WgE",
+//   authDomain: "webprogramming-a287a.firebaseapp.com",
+//   projectId: "webprogramming-a287a",
+//   storageBucket: "webprogramming-a287a.appspot.com",
+//   messagingSenderId: "486204863182",
+//   appId: "1:486204863182:web:9deb56dfa940088566d69f",
+//   measurementId: "G-LVRPXLYL9B"
+// };
 // const firebaseConfig = {
 //   apiKey: "AIzaSyD0but9mklEoUTAJKEX7aTxcamlvLr6WgE",
 //   authDomain: "webprogramming-a287a.firebaseapp.com",
