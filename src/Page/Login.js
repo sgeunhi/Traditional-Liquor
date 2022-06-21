@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Link as RouterLink, useNavigate} from "react-router-dom";
+import {Link as RouterLink, useNavigate, useLocation} from "react-router-dom";
 import {auth, logInWithEmailAndPassword, signInWithGoogle} from "../Firebase/service";
 import {useAuthState} from "react-firebase-hooks/auth";
 import "../Styles/Login.css";
@@ -14,13 +14,18 @@ function Login() {
   const [password, setPassword] = useState("");
   const [user, loading, error] = useAuthState(auth);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
+    const from = location.state?.from?.pathname || "/home";
     if (loading) {
       // maybe trigger a loading screen
       return;
     }
-    if (user) navigate("/home");
+    if (user) {
+      console.log(location.state?.from?.pathname)
+      navigate('/home')
+    }
   }, [user, loading]);
 
   return (
@@ -46,7 +51,7 @@ function Login() {
         />
         <Button
           variant="contained"
-          sx={{width: 260, height: 40, marginBottom:3}}
+          sx={{width: 260, height: 40, marginBottom: 3}}
           onClick={() => logInWithEmailAndPassword(email, password)}
         >
           로그인

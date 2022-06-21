@@ -33,24 +33,25 @@ function Liquor() {
     }
     if (!user) navigate("/");
   }, [user, loading]);
+
   useEffect(() => {
+    console.log(alcoholList)
     if (parseInt(params.id) === 1) {
       setFilteredItemsId(1);
-
       setFilteredAlcoholList(alcoholList.filter(e =>
         e.typeofAlcohol.includes("탁주") || e.typeofAlcohol.includes("막걸리")
       ));
-
     } else if (parseInt(params.id) === 2) {
       setFilteredItemsId(2);
       setFilteredAlcoholList(alcoholList.filter(e =>
         e.typeofAlcohol.includes("청주") || e.typeofAlcohol.includes("약주") || e.typeofAlcohol.includes("기타주류")
       ));
     } else if (parseInt(params.id) === 3) {
-        
+
       setFilteredItemsId(3);
-      setFilteredAlcoholList(alcoholList.filter(e =>
-        e.typeofAlcohol.includes("과실") || e.typeofAlcohol.includes("와인") || e.typeofAlcohol.includes("브랜디")
+      setFilteredAlcoholList(alcoholList.filter(e =>{
+        console.log(e)
+        return e.typeofAlcohol.includes("과실") || e.typeofAlcohol.includes("와인") || e.typeofAlcohol.includes("브랜디")}
       ));
     } else if (parseInt(params.id) === 4) {
       setFilteredItemsId(4);

@@ -69,7 +69,10 @@ const Details = () => {
         timeStamp,
       )
     ).then(() => setReview('')
-    ).then(() => reviewListRefresh()
+    ).then(() => {
+        reviewListRefresh()
+        setStarRate(0);
+      }
     )
   }
   return (

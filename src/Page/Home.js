@@ -50,7 +50,6 @@ const Home = () => {
   const {name, imgUrl, price, description} = data.alcohol;
   const alcoholList = useRecoilValue(alcoholListState);
   // const alcoholList = useRecoilValue(dummyAlcoholListState);
-
   const randomHot = [];
   while(randomHot.length < 4){
     const rand = Math.floor(Math.random() * 100);
