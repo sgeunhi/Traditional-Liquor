@@ -21,7 +21,7 @@ const KakaoRecommendButton = ({mbtiCharacter, alcohol}) => {
         window.Kakao.Link.sendDefault({
             objectType: 'feed',
             content: {
-                title: `${alcohol.name}을 추천합니다!`,
+                title: `${alcohol.name} 을(를) 추천합니다!`,
                 description:`${mbtiCharacter}인 당신에게 추천하는 전통술!`,
                 imageUrl: alcohol.imageUrl,
                 link:{
