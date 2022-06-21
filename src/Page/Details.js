@@ -13,6 +13,7 @@ import KakaoShareButton from "../Component/KakaoShareButton.js";
 import {useState,useRef,useEffect} from "react";
 import {useRecoilValue,useRecoilState,useRecoilRefresher_UNSTABLE} from "recoil";
 import {alcoholListState, rateListState} from "../Store/selector";
+import { dummyAlcoholListState } from '../Store/atom';
 import getRate from "../Api/getRate"
 import postRate from "../Api/postRate"
 import {useAuthState} from "react-firebase-hooks/auth";
@@ -23,6 +24,7 @@ const Details = () => {
   const [user, loading, error] = useAuthState(auth);
   const alcoholList = useRecoilValue(alcoholListState);
   //const alcoholList = useRecoilValue(dummyAlcoholListState);
+
     let params = useParams();
   const currentAlcohol = alcoholList.filter(_alcohol => _alcohol.id === params)[0];
 

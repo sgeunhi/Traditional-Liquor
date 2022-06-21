@@ -3,12 +3,10 @@ import "../Styles/Reset.css";
 import "../Styles/Home.css";
 import {Link, Link as RouterLink} from "react-router-dom";
 import {useRecoilValue, useRecoilState} from "recoil";
-// import {dummyAlcoholListState} from '../Store/atom';
+import {dummyAlcoholListState} from '../Store/atom';
 import {alcoholListState} from "../Store/selector";
 function Items({currentItems}) {
-  // const onClickLiquor = (e) => {
-  //   window.location.href = './details/0';
-  // }
+  
   // const alcoholList = useRecoilValue(dummyAlcoholListState);
   const alcoholList = useRecoilValue(alcoholListState);
   const onClickItem = (idx, num) => {
@@ -24,13 +22,13 @@ function Items({currentItems}) {
     // window.location.href = `/details/${num}`; 
   }
   const currentPage = document.querySelector('.currentPage');
-  const curr_page = currentPage ? currentPage.innerText : 0;
+  const curr_page = currentPage ? currentPage.innerText : 1;
   return (
     <>
       {currentItems.map((alcohol, idx) => {
         return (
-          <RouterLink className="liquor-card" to={`/details/${alcoholList[parseInt(curr_page) * 25 - 25 + idx].id}`}>
-            <div className="liquor-div" onClick={() => onClickItem(idx, parseInt(curr_page) * 25 - 25 + idx)}>
+          <RouterLink className="liquor-card" to={`/details/${alcoholList[parseInt(curr_page) * 28 - 28 + idx].id}`}>
+            <div className="liquor-div" onClick={() => onClickItem(idx, parseInt(curr_page) * 28 - 28 + idx)}>
               <img className="liquor-card-img" referrerPolicy="no-referrer" src={alcohol.imageUrl}/>
               <span style={{fontWeight: "bold"}}>{alcohol.name} | {alcohol.price}원 <br></br></span>
             </div>

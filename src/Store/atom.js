@@ -30,3 +30,24 @@ export const categoryState = atom({
   key : 'categoryState',
   default : 0,
 })
+
+export const filteredPageCountState = atom({
+  key: 'filteredPageCountState',
+  default : 1
+})
+export const filteredAlcoholListState = atom({
+  key: 'filteredAlcoholListState',
+  default : []
+})
+export const currentFilteredAlcoholListState = atom({
+  key: 'currentFilteredAlcoholListState',
+  default: []
+})
+export const filteredItemOffsetState = atom({
+  key: 'filteredItemOffsetState',
+  default: 0
+})
+export const filteredItemsIdState = atom({
+  key: 'filteredItemsIdState',
+  default : 0
+})
