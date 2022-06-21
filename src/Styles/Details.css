@@ -67,11 +67,15 @@ h1 {
     margin-right: 50px;
     cursor: pointer;
     align-items: center;
+    text-decoration: none;
+    color: inherit;
 }
 
 .naverUrl {
     font-size: 20px;
     line-height: 100px;
+    text-decoration: none;
+    color: inherit;
 }
 
 .rate {
@@ -88,6 +92,7 @@ h1 {
 .rateHead {
     font-size: larger;
     margin-top: 20px;
+    margin-bottom: 40px;
     height: 0px;
 }
 

@@ -68,8 +68,8 @@ const Details = () => {
         review,
         timeStamp,
       )
-    ).then(() =>
-      reviewListRefresh()
+    ).then(() => setReview('')
+    ).then(() => reviewListRefresh()
     )
   }
   return (
@@ -91,7 +91,7 @@ const Details = () => {
       </div>
       <div style={{marginBottom: 20}}>
         <KakaoRecommendButton description={currentAlcohol.description} buttonTitle={'더 알아보기'}
-                              alcohol={currentAlcohol}/>      </div>
+                              alcohol={currentAlcohol}/></div>
       <br/>
       <a className='naverLink' href={currentAlcohol.detailUrl} target="_blank">
         <img src={magnifier} className='magnifier'/>
@@ -105,10 +105,10 @@ const Details = () => {
                     setStarRate(newValue);
                   }}/>
           <Input className='reviewInput' onChange={onChange} value={review}/>
-          <Button className='rateButton'  onClick={postReview}>리뷰 남기기</Button>
+          <Button className='rateButton' onClick={postReview}>리뷰 남기기</Button>
         </div>
         <div className='reviewList'>
-          <h2 className='reviewHeader'>REVIEWS</h2>
+          <h2 className='reviewHeader'>리뷰 목록</h2>
           <div className='reviewMain'>
             {reviewList.map((review) => {
               return (
