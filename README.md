@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# 전통술 백과사전
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+최근 트렌디한 전통술(원소주 등)이 시장에 나오고 있음.
+이 기회에 전통술에 대한 MZ 세대의 관심을 높이기 위한 웹사이트를 제작함.<br/>
+전통술 백과사전을 제공하며, MZ 세대의 관심을 위해 술 MBTI 검사를 추가했고
+검사결과 기반으로 본인에게 맞는 전통술을 추천해주는 기능을 넣음.
 
-## Available Scripts
+---
+## 주요 기능
+### 홈 화면
+![](src/Asset/Home.png)
 
-In the project directory, you can run:
+![](src/Asset/Home_AlcoholList.png)
+전통술을 검색하거나, 주종별로 전통술을 확인할 수 있음.<br/>
+전통술을 둘러볼 수도 있음.
+<br/>
+### 상세 페이지
+![](src/Asset/Detail_Full_2.png)
+전통술 선택 시 상세 페이지에서 자세한 정보를 확인 가능함.<br/>
+카카오톡으로 전통술을 공유할 수도 있으며 리뷰를 남길 수도 있음.<br/>
+네이버 지식백과 버튼 클릭 시 네이버 지식백과에서 해당 전통술 정보를 확인 가능함.
 
-### `npm start`
+### 술 MBTI 검사
+![](src/Asset/MBTIQuiz.png)
+![](src/Asset/RecommendMBTI.png)
+술 MBTI 검사를 통해 본인의 술자리 성격을 알 수 있음. <br/>
+그리고 해당 검사 결과를 기반으로 전통술을 추천함. 추천받은 전통술을 카카오톡으로 공유할 수 있음.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 카카오톡 공유하기
+<p align="center">
+  <img src="src/Asset/RecommendSite.png" width="200" />
+  <img src="src/Asset/RecommendAlcohol.png" width="200" />
+  <img src="src/Asset/RecommendDetail.png" width="200" />
+</p>
+카카오톡 공유하기 기능으로 전통술을 카카오톡으로 공유할 수 있음.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+--- 
+### 기술 스택
+- Front End : `ReactJs` / `Recoil` / `JQuery`
+- Database : `Firebase Cloud Firestore`
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 릴리즈 노트
+- 2022.06.22 : `1.0.0` 배포
+  - 접속 url: https://webprogramming-a287a.web.app
+### 개발자
+- 구근우 `9geunu`
+- 권민규 `sgeunhi`
+- 권재영 `jaylions`
+- 김진호 `jho378`
