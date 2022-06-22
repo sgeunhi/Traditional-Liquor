@@ -2,7 +2,6 @@ import React from "react";
 
 const StarRates = (starNum) => {
   const result = [];
-  console.log(starNum)
   for (let i = 0; i < starNum.starNum; i++) {
     result.push(<div>⭐</div>)
   }

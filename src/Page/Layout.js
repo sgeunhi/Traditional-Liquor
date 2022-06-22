@@ -52,7 +52,6 @@ const Layout = () => {
   }
 
   const onClickNavigateHome = () => {
-    console.log('hello')
     navigate("/home");
   }
   return (
