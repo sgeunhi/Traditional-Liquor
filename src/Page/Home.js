@@ -1,13 +1,9 @@
 import * as React from 'react';
-import {Button} from "@mui/material";
-import {Autocomplete, TextField} from "@mui/material"
-import SearchIcon from '@mui/icons-material/Search';
-import {auth, logout} from "../Firebase/service";
-import {useEffect, useState} from "react";
-import {Link, Link as RouterLink} from "react-router-dom";
+import {auth} from "../Firebase/service";
+import {useEffect} from "react";
+import {Link as RouterLink} from "react-router-dom";
 import {useAuthState} from "react-firebase-hooks/auth";
 import {useNavigate} from "react-router-dom";
-
 import alcohol_icon from "../Asset/alcohol-icon.png";
 import liquor_1 from "../Asset/liquor-1.png";
 import liquor_2 from "../Asset/liquor-2.png";
@@ -25,14 +21,12 @@ import {Navigation, Pagination, Autoplay} from 'swiper'
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css';
-
 import "../Styles/Reset.css";
 import "../Styles/Home.scss";
 import {useRecoilValue, useRecoilState} from "recoil";
 import {alcoholListState} from "../Store/selector";
 import PaginatedItems from "../Component/PaginatedItems";
-import { categoryState } from '../Store/atom';
-import {dummyAlcoholListState} from '../Store/atom';
+import {categoryState} from '../Store/atom';
 
 const Home = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -46,28 +40,22 @@ const Home = () => {
     if (!user) navigate("/");
   }, [user, loading]);
 
-  const data = require("../Asset/alcohol.json");
-  const {name, imgUrl, price, description} = data.alcohol;
   const alcoholList = useRecoilValue(alcoholListState);
-  // const alcoholList = useRecoilValue(dummyAlcoholListState);
   const randomHot = [];
-  while(randomHot.length < 4){
+  while (randomHot.length < 4) {
     const rand = Math.floor(Math.random() * 100);
-    if (randomHot.indexOf(rand) === -1){
+    if (randomHot.indexOf(rand) === -1) {
       randomHot.push(rand);
     }
   }
   const [category, setCategory] = useRecoilState(categoryState);
-  useEffect(()=> {
-    if (category !== 0){
+  useEffect(() => {
+    if (category !== 0) {
       const liquors = document.querySelector('#liquor-card-wrapper-text');
       liquors.scrollIntoView();
     }
-    // const liquors = document.querySelector('#liquor-card-wrapper-text');
-    // liquors.scrollIntoView();
-
-    console.log("category changing recognized");
   }, [category]);
+
   return (
     <div style={{height: "100vh"}}>
       <div id="liquor-swiper">
@@ -79,7 +67,6 @@ const Home = () => {
           autoplay={true}
           id="swiper"
           slidesPerView={1}
-          // onSlideChange={() => console.log('slide change')}
           navigation={{
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
@@ -88,13 +75,11 @@ const Home = () => {
             el: ".swiper-pagination",
             clickable: true,
           }}
-          // onSwiper={(swiper) => console.log(swiper)}
         >
           <div id="swiper-wrapper">
             <SwiperSlide>
               <img className="liquor" id="liquor-1" src={liquor_1} alt=""/>
               <span id="liquor-1-text">
-
                 해물파전에 막걸리 한 잔 어때요?<br></br>
                 술 MBTI로 막걸리와의 궁합을 알아보세요<br></br>
                 <RouterLink id="liquor-1-quiz" style={{borderRadius: "5%"}} component={RouterLink} to="/quiz">술 MBTI 검사하러 가기</RouterLink>
@@ -127,11 +112,8 @@ const Home = () => {
           </div>
           <div className="swiper-button-prev"></div>
           <div className="swiper-button-next"></div>
-          {/* <div className="swiper-pagination"></div> */}
-
         </Swiper>
       </div>
-
       <div className="experience-container">
         <div className="experiences" id="experience-1">
           <img className="experience-img" src={dinner} alt=""/>
@@ -150,14 +132,12 @@ const Home = () => {
         <img id="popular-alcohol-icon" src={alcohol_icon} alt="alcohol"/>
         <h1 style={{fontSize: "200%"}}>현재 <span style={{color: "#bb17ff"}}>HOT</span>한 주류</h1>
         <div className="popular-wrapper">
-          {/* <div className="popular"> */}
-
           {randomHot.map(rand =>
             <RouterLink className="popular" component={RouterLink} to={`/details/${alcoholList[rand].id}`}>
-            <img className="popular-img" referrerPolicy="no-referrer" src={alcoholList[rand].imageUrl}/>
-            <span className="popular-text">{alcoholList[rand].name} | {alcoholList[rand].price}원 </span>
-          </RouterLink>
-            )}
+              <img className="popular-img" referrerPolicy="no-referrer" src={alcoholList[rand].imageUrl}/>
+              <span className="popular-text">{alcoholList[rand].name} | {alcoholList[rand].price}원 </span>
+            </RouterLink>
+          )}
         </div>
       </div>
       <div className="latest-news">

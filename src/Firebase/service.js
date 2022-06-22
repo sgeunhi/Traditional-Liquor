@@ -8,9 +8,6 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   sendPasswordResetEmail,
-  onAuthStateChanged,
-  signInWithRedirect,
-  getRedirectResult,
   signOut,
 } from "firebase/auth";
 import {
@@ -22,16 +19,6 @@ import {
   setDoc,
   addDoc,
 } from "firebase/firestore";
-//
-// const firebaseConfig = {
-//   apiKey: "AIzaSyCZjgDWb8WI1FhxDPS76thU40G37aFV30o",
-//   authDomain: "tempwebprogramming.firebaseapp.com",
-//   projectId: "tempwebprogramming",
-//   storageBucket: "tempwebprogramming.appspot.com",
-//   messagingSenderId: "538087544656",
-//   appId: "1:538087544656:web:1e45dc894e632459cdbe55",
-//   measurementId: "G-LYN5RZ4Y1G"
-// };
 
 const firebaseConfig = {
   apiKey: "AIzaSyD0but9mklEoUTAJKEX7aTxcamlvLr6WgE",

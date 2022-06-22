@@ -8,14 +8,12 @@ import Items from "./Items";
 import "../Styles/Home.scss";
 import "../Styles/Pagination.css"
 import "../Styles/Reset.css";
-import {dummyAlcoholListState} from '../Store/atom';
 
 function PaginatedItems({itemsPerPage}) {
   const [pageCount, setPageCount] = useRecoilState(pageCountState);
   const [currentAlcoholList, setCurrentAlcoholList] = useRecoilState(currentAlcoholListState);
   const [itemOffset, setItemOffset] = useRecoilState(itemOffsetState);
   const alcoholList = useRecoilValue(alcoholListState);
-  // const alcoholList = useRecoilValue(dummyAlcoholListState);
   const scrollToRef = useRef();
 
   useEffect(() => {

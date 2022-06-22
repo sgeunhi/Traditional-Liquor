@@ -17,13 +17,11 @@ function Login() {
   const location = useLocation();
 
   useEffect(() => {
-    const from = location.state?.from?.pathname || "/home";
     if (loading) {
       // maybe trigger a loading screen
       return;
     }
     if (user) {
-      console.log(location.state?.from?.pathname)
       navigate('/home')
     }
   }, [user, loading]);

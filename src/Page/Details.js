@@ -1,21 +1,15 @@
 import * as React from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
 import {Button, Input, Rating} from "@mui/material";
-import {auth, logout} from "../Firebase/service";
-import {Autocomplete, TextField} from "@mui/material"
-import SearchIcon from '@mui/icons-material/Search';
-import alcohol_icon from "../Asset/alcohol-icon.png";
-import {Link as RouterLink} from "react-router-dom";
+import {auth} from "../Firebase/service";
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import magnifier from "../Asset/magnifier.png"
 import StarRates from '../Component/StarRates';
 import "../Styles/Details.css";
-import KakaoShareButton from "../Component/KakaoShareButton.js";
 import {useState, useRef, useEffect} from "react";
 import {useRecoilValue, useRecoilState, useRecoilRefresher_UNSTABLE} from "recoil";
 import {alcoholListState, rateListState} from "../Store/selector";
-import getRate from "../Api/getRate"
 import postRate from "../Api/postRate"
 import {useAuthState} from "react-firebase-hooks/auth";
 import {Rate} from "../Entity/Rate"
@@ -25,8 +19,6 @@ import KakaoRecommendButton from "../Component/KakaoRecommendButton";
 const Details = () => {
   const [user, loading, error] = useAuthState(auth);
   const alcoholList = useRecoilValue(alcoholListState);
-  //const alcoholList = useRecoilValue(dummyAlcoholListState);
-
   let params = useParams();
   const currentAlcohol = alcoholList.filter(_alcohol => _alcohol.id === params.id)[0];
   const top = useRef();
@@ -55,9 +47,6 @@ const Details = () => {
   }
   const postReview = async () => {
     const timeStamp = new Date().getTime();
-    console.log(starRate);
-    console.log(review);
-    console.log(timeStamp)
     postRate(
       new Rate(
         null,
@@ -152,8 +141,6 @@ const Details = () => {
                         </Typography>
                       </Typography>
                     </Typography>
-                    {/*<p*/}
-                    {/*  className='reviews'> {review.userName} : {review.reviewText} {new Date(review.timestamp).toLocaleString()}</p>*/}
                   </div>
                 </>
               )

@@ -7,7 +7,13 @@ import {useNavigate, useParams} from 'react-router-dom';
 import {useEffect} from "react";
 import {useRecoilValue, useRecoilState} from "recoil";
 import {alcoholListState} from "../Store/selector";
-import {dummyAlcoholListState, filteredAlcoholListState, filteredPageCountState, filteredItemOffsetState, filteredItemsIdState} from "../Store/atom";
+import {
+  dummyAlcoholListState,
+  filteredAlcoholListState,
+  filteredPageCountState,
+  filteredItemOffsetState,
+  filteredItemsIdState
+} from "../Store/atom";
 
 import FilteredItems from "../Component/FilteredItems";
 import FilteredPaginatedItems from "../Component/FilteredPaginatedItems";
@@ -35,7 +41,6 @@ function Liquor() {
   }, [user, loading]);
 
   useEffect(() => {
-    console.log(alcoholList)
     if (parseInt(params.id) === 1) {
       setFilteredItemsId(1);
       setFilteredAlcoholList(alcoholList.filter(e =>
@@ -47,11 +52,10 @@ function Liquor() {
         e.typeofAlcohol.includes("청주") || e.typeofAlcohol.includes("약주") || e.typeofAlcohol.includes("기타주류")
       ));
     } else if (parseInt(params.id) === 3) {
-
       setFilteredItemsId(3);
-      setFilteredAlcoholList(alcoholList.filter(e =>{
-        console.log(e)
-        return e.typeofAlcohol.includes("과실") || e.typeofAlcohol.includes("와인") || e.typeofAlcohol.includes("브랜디")}
+      setFilteredAlcoholList(alcoholList.filter(e => {
+          return e.typeofAlcohol.includes("과실") || e.typeofAlcohol.includes("와인") || e.typeofAlcohol.includes("브랜디")
+        }
       ));
     } else if (parseInt(params.id) === 4) {
       setFilteredItemsId(4);

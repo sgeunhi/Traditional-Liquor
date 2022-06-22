@@ -1,8 +1,8 @@
 import * as React from "react";
 import "../Styles/Reset.css";
 import "../Styles/Home.css";
-import {Link, Link as RouterLink} from "react-router-dom";
-import {useRecoilValue, useRecoilState} from "recoil";
+import {Link as RouterLink} from "react-router-dom";
+import {useRecoilValue} from "recoil";
 import {currentFilteredAlcoholListState, filteredAlcoholListState} from "../Store/atom";
 function FilteredItems({currentFilteredAlcoholList}){
     const filteredAlcoholList = useRecoilValue(filteredAlcoholListState);
@@ -10,7 +10,7 @@ function FilteredItems({currentFilteredAlcoholList}){
     return (
       <>
         {_currentFilteredAlcoholList.map((alcohol, idx) => {
-          
+
         return (
             <RouterLink className="liquor-card" to={`/details/${alcohol.id}`}>
                 <div className="liquor-div">
@@ -20,7 +20,7 @@ function FilteredItems({currentFilteredAlcoholList}){
             </RouterLink>
         )
         })}
-        
+
       </>
     );
 }

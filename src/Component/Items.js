@@ -1,16 +1,15 @@
 import * as React from "react";
 import "../Styles/Reset.css";
 import "../Styles/Home.css";
-import {Link, Link as RouterLink} from "react-router-dom";
-import {useRecoilValue, useRecoilState} from "recoil";
-import {dummyAlcoholListState} from '../Store/atom';
+import {Link as RouterLink} from "react-router-dom";
+import {useRecoilValue} from "recoil";
 import {alcoholListState} from "../Store/selector";
+
 function Items({currentItems}) {
-  
-  // const alcoholList = useRecoilValue(dummyAlcoholListState);
+
   const alcoholList = useRecoilValue(alcoholListState);
   const onClickItem = (idx, num) => {
-    if (localStorage.getItem("liquors")=== null){
+    if (localStorage.getItem("liquors") === null) {
       const liquors = [];
       liquors.push = idx;
       localStorage.setItem("liquors", JSON.stringify(liquors));
@@ -19,7 +18,6 @@ function Items({currentItems}) {
       liquors.push(idx);
       localStorage.setItem("liquors", JSON.stringify(liquors));
     }
-    // window.location.href = `/details/${num}`; 
   }
   const currentPage = document.querySelector('.currentPage');
   const curr_page = currentPage ? currentPage.innerText : 1;
@@ -39,5 +37,4 @@ function Items({currentItems}) {
   );
 }
 
-// window.location.href =
 export default Items;
