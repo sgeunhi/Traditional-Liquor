@@ -1,0 +1,63 @@
+#question-container {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+#result-container {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30%;
+}
+
+#recommend-liquor {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10%;
+}
+
+#answer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#answer-button {
+    font-size: 1rem;
+    font-weight: 800;
+    height: 6em;
+    width: 24rem;
+    margin: 1em;
+}
+
+#question-count {
+    margin-top: 1rem;
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+
+.liquor-card {
+    width: 11rem;
+    margin: 0 2rem 0 2rem;
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.liquor-card .liquor-card-img {
+    width: 100%;
+    height: 70%;
+    margin-bottom: 5%;
+}
+
+.liquor-card span {
+    height: 10%;
+}

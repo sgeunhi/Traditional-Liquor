@@ -22,15 +22,11 @@ function Register() {
   const register = () => {
     if (!nickname) alert("닉네임을 입력하세요");
     registerWithEmailAndPassword(nickname, email, password)
-      .then((result) => {
-        console.log(result);
-        alert("회원가입이 완료되었습니다");
-      });
   };
 
   useEffect(() => {
     if (loading) return;
-    // if (user) navigate("/home", {replace: true});
+    if (user) navigate("/home", {replace: true});
   }, [user, loading]);
 
   return (
@@ -38,7 +34,7 @@ function Register() {
       <div className="register-container">
         <TextField
           label="Nickname"
-          sx={{width: 260, height: 40, marginBottom: 2}}
+          sx={{width: 260, height: 40, marginBottom: 3}}
           type="text"
           value={nickname}
           onChange={(e) => setNickname(e.target.value)}
@@ -46,7 +42,7 @@ function Register() {
         />
         <TextField
           label="Email"
-          sx={{width: 260, height: 40, marginBottom: 2}}
+          sx={{width: 260, height: 40, marginBottom: 3}}
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -54,7 +50,7 @@ function Register() {
         />
         <TextField
           label="Password"
-          sx={{width: 260, height: 40, marginBottom: 3.5}}
+          sx={{width: 260, height: 40, marginBottom: 5}}
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -62,9 +58,9 @@ function Register() {
         />
         <Button variant="contained"
                 sx={{width: 260, height: 40, marginBottom: 2}} onClick={register}>
-          Register
+          회원가입
         </Button>
-        <GoogleButton onClick={signInWithGoogle} style={{marginBottom: 10, width: 260}}/>
+        <GoogleButton onClick={signInWithGoogle} style={{marginBottom: 20, width: 260}}/>
         <Link underline="hover" component={RouterLink} to="/">
           로그인
         </Link>

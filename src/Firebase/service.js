@@ -1,4 +1,4 @@
-import * as firebase from "firebase/app";
+import firebase from "firebase/compat/app"
 import {initializeApp} from "firebase/app";
 import {getAnalytics} from "firebase/analytics";
 import {
@@ -8,9 +8,6 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   sendPasswordResetEmail,
-  onAuthStateChanged,
-  signInWithRedirect,
-  getRedirectResult,
   signOut,
 } from "firebase/auth";
 import {
@@ -19,6 +16,7 @@ import {
   getDocs,
   collection,
   where,
+  setDoc,
   addDoc,
 } from "firebase/firestore";
 
@@ -31,7 +29,6 @@ const firebaseConfig = {
   appId: "1:486204863182:web:9deb56dfa940088566d69f",
   measurementId: "G-LVRPXLYL9B"
 };
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
@@ -61,6 +58,7 @@ const signInWithGoogle = async () => {
   }
 };
 
+// 이메일 비밀번호 로그인
 const logInWithEmailAndPassword = async (email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
@@ -70,6 +68,8 @@ const logInWithEmailAndPassword = async (email, password) => {
   }
 };
 
+
+//이메일 비밀번호 회원가입
 const registerWithEmailAndPassword = async (name, email, password) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
@@ -83,9 +83,11 @@ const registerWithEmailAndPassword = async (name, email, password) => {
   } catch (err) {
     console.error(err);
     alert(err.message);
+    return err;
   }
 };
 
+// 비밀번호 재설정
 const sendPasswordReset = async (email) => {
   try {
     await sendPasswordResetEmail(auth, email);
@@ -96,6 +98,7 @@ const sendPasswordReset = async (email) => {
   }
 };
 
+// 로그아웃
 const logout = () => {
   signOut(auth);
   alert("로그아웃")
@@ -104,6 +107,7 @@ const logout = () => {
 export {
   auth,
   db,
+  firebase,
   signInWithGoogle,
   logInWithEmailAndPassword,
   registerWithEmailAndPassword,

@@ -1,0 +1,147 @@
+.alcoholImage {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 500px;
+}
+
+.detailImage {
+    margin-left: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.details {
+    margin-left: 50px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.detailRight {
+    text-align: left;
+    margin-left: 70px;
+    display: flex;
+    flex-direction: column;
+}
+
+.detailList {
+    padding: 20px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #F0FFFF;
+    border-radius: 15px;
+    line-height: 200%;
+    width: 400px;
+    height: 400px;
+    text-align: left;
+}
+
+.description {
+    margin-top: 30px;
+    overflow: scroll;
+}
+
+h1 {
+    font-size: 35px;
+}
+
+.starRate {
+    padding: 50px
+}
+
+.magnifier {
+    margin-top: 15px;
+    margin-right: 10px;
+    width: 10%;
+    height: 20%;
+}
+
+.naverLink {
+    display: flex;
+    justify-content: center;
+    border: 1px solid greenyellow;
+    margin-left: 50px;
+    margin-right: 50px;
+    cursor: pointer;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.naverUrl {
+    font-size: 20px;
+    line-height: 100px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.rate {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    margin-top: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+    height: 500px;
+}
+
+.rateHead {
+    font-size: larger;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    height: 0px;
+}
+
+.rateDetails {
+    display: flex;
+}
+
+.reviewInput{
+    margin-left: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.rateButton {
+    width: 200px;
+}
+
+.reviewHeader {
+    text-align: left;
+    margin-left: 50px;
+}
+
+.alcoholName {
+    margin-left: 20px;
+    font-size: 50px;
+}
+
+.reviewList {
+    margin-top: 15px;
+    overflow: scroll;
+}
+
+.reviews {
+    text-align: left;
+}
+
+.reviewMain {
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+}
+
+.reviewBox {
+    display: flex;
+    height: auto;
+    align-items: center;
+    justifyContent: 'space-between';
+}
+
+.rateStar{
+    margin-left:30px;
+}
